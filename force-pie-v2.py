@@ -57,7 +57,7 @@ SPICS = 25 ## GPIO Pin 22
 ## Small FSR's connected to ADC
 fsr_adc_red = 0 ## Red on Channel 0
 fsr_adc_yellow = 2 ## Yellow on Channel 2
-fsr_adc_green = 3 ## Green on Channel 3
+fsr_adc_green = 4 ## Green on Channel 4
 
 # LED GPIO numbers(BCM)
 red_led = 21 ## Red - GPIO Pin 40
