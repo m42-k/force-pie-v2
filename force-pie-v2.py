@@ -49,15 +49,15 @@ def readadc(adcnum, clockpin, mosipin, misopin, cspin):
         return adcout
         
 ## GPIO numbers (BCM) used when connecting the ADC to the Raspberry Pi
-SPICLK = 18 ## GPIO Pin 12
+SPICLK = 18 ## (CLK) GPIO Pin 12
 SPIMISO = 23 ## GPIO Pin 16
 SPIMOSI = 24 ## GPIO Pin 18
-SPICS = 25 ## GPIO Pin 22
+SPICS = 25 ## (CS/SHDN) GPIO Pin 22
 
 ## Small FSR's connected to ADC
-fsr_adc_red = 0; ## Red on Channel 0
-fsr_adc_yellow = 2; ## Yellow on Channel 2
-fsr_adc_green = 4; ## Green on Channel 4
+fsr_adc_red = 0 ## Red on Channel 0
+fsr_adc_yellow = 2 ## Yellow on Channel 2
+fsr_adc_green = 4 ## Green on Channel 4
 
 # LED GPIO numbers(BCM)
 red_led = 21 ## Red - GPIO Pin 40
@@ -101,9 +101,9 @@ while True:
         block_inserted_green = False ## Green
 
         ## Read the signals from the FSR's
-        fsr_signal_red = readadc(fsr_adc_red, SPICLK, SPIMOSI, SPIMISO, SPICS) ## Red
-        fsr_signal_yellow = readadc(fsr_adc_yellow, SPICLK, SPIMOSI, SPIMISO, SPICS) ## Yellow
-        fsr_signal_green = readadc(fsr_adc_green, SPICLK, SPIMOSI, SPIMISO, SPICS) ## Green
+        fsr_signal_red = readadc(0, SPICLK, SPIMOSI, SPIMISO, SPICS) ## Red
+        fsr_signal_yellow = readadc(2, SPICLK, SPIMOSI, SPIMISO, SPICS) ## Yellow
+        fsr_signal_green = readadc(4, SPICLK, SPIMOSI, SPIMISO, SPICS) ## Green
         
         ## How much has it changed since the last read?
         #fsr_adjust_red = abs(fsr_signal_red - last_fsr_read_red) ## Red
