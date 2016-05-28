@@ -4,6 +4,7 @@
 # This code is released into the public domain
 
 # HEAVILY MODIFIED BY m42-k!
+# Raspberry Pi Model B+ Used
 
 import time
 import os
@@ -47,14 +48,14 @@ def readadc(adcnum, clockpin, mosipin, misopin, cspin):
         adcout >>= 1       # first bit is 'null' so drop it
         return adcout
         
-## GPIO pins used when connecting the ADC to the Raspberry Pi
-SPICLK = 18 
-SPIMISO = 23
-SPIMOSI = 24
-SPICS = 25
+## GPIO numbers (BCM) used when connecting the ADC to the Raspberry Pi
+SPICLK = 18 ## GPIO Pin 12
+SPIMISO = 23 ## GPIO Pin 16
+SPIMOSI = 24 ## GPIO Pin 18
+SPICS = 25 ## GPIO Pin 22
 
 ## Small FSR's connected to ADC
-fsr_adc_red = 0; ## Red on  Channel 0
+fsr_adc_red = 0; ## Red on Channel 0
 fsr_adc_yellow = 2; ## Yellow on Channel 2
 fsr_adc_green = 4; ## Green on Channel 4
 
