@@ -110,9 +110,9 @@ while True:
         fsr_signal_green = readadc(fsr_adc_green, SPICLK, SPIMOSI, SPIMISO, SPICS) ## Green
         
         ## How much has it changed since the last read?
-        #fsr_adjust_red = abs(fsr_signal_red - last_fsr_read_red) ## Red
-        #fsr_adjust_yellow = abs(fsr_signal_yellow - last_fsr_read_yellow) ## Yellow
-        #fsr_adjust_green = abs(fsr_signal_green - last_fsr_read_green) ## Green
+        fsr_adjust_red = abs(fsr_signal_red - last_fsr_read_red) ## Red
+        fsr_adjust_yellow = abs(fsr_signal_yellow - last_fsr_read_yellow) ## Yellow
+        fsr_adjust_green = abs(fsr_signal_green - last_fsr_read_green) ## Green
         
         #if DEBUG:
                 ## Red
@@ -128,13 +128,13 @@ while True:
                 #print "fsr_adjust_green:", fsr_adjust_green
                 #print "last_fsr_read_green", last_fsr_read_green
         ## Red
-        if ( fsr_signal_red > tolerance ):
+        if fsr_signal_red < tolerance:
                block_inserted_red = True
         ## Yellow
-        if ( fsr_signal_yellow > tolerance ):
+        if fsr_signal_yellow < tolerance:
                block_inserted_yellow = True
         ## Green
-        if ( fsr_signal_green > tolerance ): 
+        if fsr_signal_green < tolerance: 
                block_inserted_green = True
 
         #if DEBUG:
@@ -149,7 +149,7 @@ while True:
         print "block_inserted_red", block_inserted_red ## Red
         
         ## RED
-        if ( block_inserted_red ):
+        if block_inserted_red is True:
                 red_block_in()
                 #range_100_red = fsr_signal_red / 10.24           # convert 10bit adc0 (0-1024) trim pot read into 0-100 volume level
                 #range_100_red = round(range_100_red)          # round out decimal value
@@ -165,11 +165,11 @@ while True:
 
                 ## Save the FSR reading for the next loop
                 #last_fsr_read_red = fsr_adjust_red
-                #time.sleep(0.5)
-                #GPIO.output(green_led, False)
+                time.sleep(0.5)
+                GPIO.output(green_led, False)
                 
         ## YELLOW
-        if ( block_inserted_yellow ):
+        if block_inserted_yellow is True:
                 yellow_block_in() 
                 #range_100_yellow = fsr_signal_yellow / 10.24           # convert 10bit adc0 (0$
                 #range_100_yellow = round(range_100_yellow)          # round out decimal val$
@@ -185,11 +185,11 @@ while True:
 
                 ## Save the FSR reading for the next loop
                 #last_fsr_read_yellow = fsr_adjust_yellow
-                #time.sleep(0.5)
-                #GPIO.output(yellow_led, False)
+                time.sleep(0.5)
+                GPIO.output(yellow_led, False)
                 
         ## GREEN
-        if ( block_inserted_green ):
+        if block_inserted_green is True:
                 green_block_in() 
                 #range_100_green = fsr_signal_green / 10.24           # convert 10bit adc0 (0$
                 #range_100_green = round(range_100_green)          # round out decimal val$
@@ -205,13 +205,13 @@ while True:
 
                 ## Save the FSR reading for the next loop
                 #last_fsr_read_green = fsr_adjust_green
-                #time.sleep(0.5)
-                #GPIO.output(green_led, False)
+                time.sleep(0.5)
+                GPIO.output(green_led, False)
 
         ## Hang out and do nothing for a half second
         time.sleep(0.5)
         
         ## Turn LED's Off
-        GPIO.output(red_led, False)
-        GPIO.output(yellow_led, False)
-        GPIO.output(green_led, False)
+        #GPIO.output(red_led, False)
+        #GPIO.output(yellow_led, False)
+        #GPIO.output(green_led, False)
