@@ -90,9 +90,9 @@ def green_block_in(): ## Green
         GPIO.output(green_led, block_inserted_green)
 
 ## Keep track of the last FSR value
-#last_fsr_read_red = 0 ## Red
-#last_fsr_read_yellow = 0 ## Yellow
-#last_fsr_read_green = 0 ## Green
+last_fsr_read_red = 0 ## Red
+last_fsr_read_yellow = 0 ## Yellow
+last_fsr_read_green = 0 ## Green
 
 ## Add a tolerance for sensitivity
 tolerance = 5       # to keep from being jittery we'll only do an action
@@ -128,13 +128,13 @@ while True:
                 #print "fsr_adjust_green:", fsr_adjust_green
                 #print "last_fsr_read_green", last_fsr_read_green
         ## Red
-        if fsr_signal_red < tolerance:
+        if fsr_signal_red > tolerance:
                block_inserted_red = True
         ## Yellow
-        if fsr_signal_yellow < tolerance:
+        if fsr_signal_yellow > tolerance:
                block_inserted_yellow = True
         ## Green
-        if fsr_signal_green < tolerance: 
+        if fsr_signal_green > tolerance: 
                block_inserted_green = True
 
         #if DEBUG:
@@ -164,7 +164,7 @@ while True:
                         #print "trim_pot_changed", set_volume
 
                 ## Save the FSR reading for the next loop
-                #last_fsr_read_red = fsr_adjust_red
+                last_fsr_read_red = fsr_adjust_red
                 time.sleep(0.5)
                 GPIO.output(green_led, False)
                 
@@ -184,7 +184,7 @@ while True:
                         #print "trim_pot_changed_yellow", set_volume_yellow
 
                 ## Save the FSR reading for the next loop
-                #last_fsr_read_yellow = fsr_adjust_yellow
+                last_fsr_read_yellow = fsr_adjust_yellow
                 time.sleep(0.5)
                 GPIO.output(yellow_led, False)
                 
@@ -204,7 +204,7 @@ while True:
                         #print "trim_pot_changed_green", set_volume_green
 
                 ## Save the FSR reading for the next loop
-                #last_fsr_read_green = fsr_adjust_green
+                last_fsr_read_green = fsr_adjust_green
                 time.sleep(0.5)
                 GPIO.output(green_led, False)
 
