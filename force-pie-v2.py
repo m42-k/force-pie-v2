@@ -124,13 +124,13 @@ while True:
                 #print "fsr_adjust_green:", fsr_adjust_green
                 #print "last_fsr_read_green", last_fsr_read_green
         ## Red
-        if fsr_signal_red > tolerance:
+        if ( fsr_signal_red > tolerance ):
                block_inserted_red = True
         ## Yellow
-        if fsr_signal_yellow > tolerance:
+        if ( fsr_signal_yellow > tolerance ):
                block_inserted_yellow = True
         ## Green
-        if fsr_signal_green > tolerance: 
+        if ( fsr_signal_green > tolerance ): 
                block_inserted_green = True
 
         #if DEBUG:
@@ -139,9 +139,13 @@ while True:
                 #print "block_inserted_green", block_inserted_green ## Green
         print "Green Sensor Reading:", fsr_signal_green ## Green
         print "block_inserted_green", block_inserted_green ## Green
+        print "Yellow Sensor Reading:", fsr_signal_yellow ## Yellow
+        print "block_inserted_yellow", block_inserted_yellow ## Yellow
+        print "Red Sensor Reading:", fsr_signal_red ## Red
+        print "block_inserted_red", block_inserted_red ## Red
         
         ## RED
-        if block_inserted_red is True:
+        if ( block_inserted_red ):
                 red_block_in()
                 #range_100_red = fsr_signal_red / 10.24           # convert 10bit adc0 (0-1024) trim pot read into 0-100 volume level
                 #range_100_red = round(range_100_red)          # round out decimal value
@@ -161,7 +165,7 @@ while True:
                 #GPIO.output(green_led, False)
                 
         ## YELLOW
-        if block_inserted_yellow is True:
+        if ( block_inserted_yellow ):
                 yellow_block_in() 
                 #range_100_yellow = fsr_signal_yellow / 10.24           # convert 10bit adc0 (0$
                 #range_100_yellow = round(range_100_yellow)          # round out decimal val$
@@ -181,7 +185,7 @@ while True:
                 #GPIO.output(yellow_led, False)
                 
         ## GREEN
-        if block_inserted_green is True:
+        if ( block_inserted_green ):
                 green_block_in() 
                 #range_100_green = fsr_signal_green / 10.24           # convert 10bit adc0 (0$
                 #range_100_green = round(range_100_green)          # round out decimal val$
