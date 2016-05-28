@@ -155,6 +155,8 @@ while True:
 
                 ## Save the FSR reading for the next loop
                 last_fsr_read_red = fsr_adjust_red
+                time.sleep(0.5)
+                GPIO.output(green_led, False)
                 
         ## YELLOW
         if ( block_inserted_yellow ):
@@ -173,6 +175,8 @@ while True:
 
                 ## Save the FSR reading for the next loop
                 last_fsr_read_yellow = fsr_adjust_yellow
+                time.sleep(0.5)
+                GPIO.output(yellow_led, False)
                 
         ## GREEN
         if ( block_inserted_green ):
@@ -191,11 +195,13 @@ while True:
 
                 ## Save the FSR reading for the next loop
                 last_fsr_read_green = fsr_adjust_green
+                time.sleep(0.5)
+                GPIO.output(green_led, False)
 
         ## Hang out and do nothing for a half second
-        time.sleep(0.5)
+        #time.sleep(0.5)
         
         ## Turn LED's Off
-        GPIO.output(red_led, False)
-        GPIO.output(yellow_led, False)
-        GPIO.output(green_led, False)
+        #GPIO.output(red_led, False)
+        #GPIO.output(yellow_led, False)
+        #GPIO.output(green_led, False)
