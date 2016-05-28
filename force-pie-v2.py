@@ -124,13 +124,13 @@ while True:
                 print "fsr_adjust_green:", fsr_adjust_green
                 print "last_fsr_read_green", last_fsr_read_green
         ## Red
-        if ( fsr_adjust_red < tolerance ):
+        if ( fsr_adjust_red > tolerance ):
                block_inserted_red = True
         ## Yellow
-        if ( fsr_adjust_yellow < tolerance ):
+        if ( fsr_adjust_yellow > tolerance ):
                block_inserted_yellow = True
         ## Green
-        if ( fsr_adjust_green < tolerance ): 
+        if ( fsr_adjust_green > tolerance ): 
                block_inserted_green = True
 
         if DEBUG:
@@ -139,7 +139,7 @@ while True:
                 print "block_inserted_green", block_inserted_green ## Green
         
         ## RED
-        if block_inserted_red is True:
+        if ( block_inserted_red ):
                 red_block_in()
                 #range_100_red = fsr_signal_red / 10.24           # convert 10bit adc0 (0-1024) trim pot read into 0-100 volume level
                 #range_100_red = round(range_100_red)          # round out decimal value
