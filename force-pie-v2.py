@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # Written by Limor "Ladyada" Fried for Adafruit Industries, (c) 2015
-# This code is released into the public domain
+# This code is released into the public domain 
 
 # HEAVILY MODIFIED BY m42-k! 
 # Raspberry Pi Model B+ Used 
