@@ -90,7 +90,7 @@ def green_block_in(): ## Green
         GPIO.output(green_led, block_inserted_green)
 
 ## Keep track of the last FSR value
-last_fsr_read_red = 0 ## Red
+last_fsr_read_red = 0 ## Red 
 last_fsr_read_yellow = 0 ## Yellow
 last_fsr_read_green = 0 ## Green
 
