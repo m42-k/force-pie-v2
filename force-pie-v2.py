@@ -141,9 +141,9 @@ while True:
         ## RED
         if ( block_inserted_red ):
                 red_block_in()
-                #range_100_red = fsr_signal_red / 10.24           # convert 10bit adc0 (0-1024) trim pot read into 0-100 volume level
-                #set_volume = round(set_volume)          # round out decimal value
-                #set_volume = int(set_volume)            # cast volume as integer
+                range_100_red = fsr_signal_red / 10.24           # convert 10bit adc0 (0-1024) trim pot read into 0-100 volume level
+                range_100_red = round(range_100_red)          # round out decimal value
+                range_100_red = int(range_100_red)            # cast volume as integer
 
                 #print 'Volume = {volume}%' .format(volume = set_volume)
                 #set_vol_cmd = 'sudo amixer cset numid=1 -- {volume}% > /dev/null' .format(volume = set_volume)
@@ -153,15 +153,15 @@ while True:
                         #print "set_volume", set_volume
                         #print "trim_pot_changed", set_volume
 
-                # save the potentiometer reading for the next loop
+                ## Save the FSR reading for the next loop
                 last_fsr_read_red = fsr_adjust_red
                 
         ## YELLOW
         if ( block_inserted_yellow ):
                 yellow_block_in() 
-                #set_volume_yellow = trim_pot_yellow / 10.24           # convert 10bit adc0 (0$
-                #set_volume_yellow = round(set_volume_yellow)          # round out decimal val$
-                #set_volume_yellow = int(set_volume_yellow)            # cast volume as integer
+                range_100_yellow = fsr_signal_yellow / 10.24           # convert 10bit adc0 (0$
+                range_100_yellow = round(range_100_yellow)          # round out decimal val$
+                range_100_yellow = int(range_100_yellow)            # cast volume as integer
 
                 #print 'Volume = {volume_yellow}%' .format(volume_yellow = set_volume_yellow)
                 #set_vol_cmd_yellow = 'sudo amixer cset numid=1 -- {volume_yellow}% > /dev/null' .format(volume_yellow = set_volume_yellow)
@@ -171,15 +171,15 @@ while True:
                         #print "set_volume_yellow", set_volume_yellow
                         #print "trim_pot_changed_yellow", set_volume_yellow
 
-                # save the potentiometer reading for the next loop 
+                ## Save the FSR reading for the next loop
                 last_fsr_read_yellow = fsr_adjust_yellow
                 
         ## GREEN
         if ( block_inserted_green ):
                 green_block_in() 
-                #set_volume_green = trim_pot_green / 10.24           # convert 10bit adc0 (0$
-                #set_volume_green = round(set_volume_green)          # round out decimal val$
-                #set_volume_green = int(set_volume_green)            # cast volume as integer
+                range_100_green = fsr_signal_green / 10.24           # convert 10bit adc0 (0$
+                range_100_green = round(range_100_green)          # round out decimal val$
+                range_100_green = int(range_100_green)            # cast volume as integer
 
                 #print 'Volume = {volume_green}%' .format(volume_green = set_volume_green)
                 #set_vol_cmd_green = 'sudo amixer cset numid=1 -- {volume_green}% > /dev/null' .format(volume_green = set_volume_green)
@@ -189,11 +189,13 @@ while True:
                         #print "set_volume_green", set_volume_green
                         #print "trim_pot_changed_green", set_volume_green
 
-                # save the potentiometer reading for the next loop  
+                ## Save the FSR reading for the next loop
                 last_fsr_read_green = fsr_adjust_green
 
-        # hang out and do nothing for a half second
+        ## Hang out and do nothing for a half second
         time.sleep(0.5)
+        
+        ## Turn LED's Off
         GPIO.output(red_led, False)
         GPIO.output(yellow_led, False)
         GPIO.output(green_led, False)
