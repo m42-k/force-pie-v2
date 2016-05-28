@@ -55,9 +55,9 @@ SPIMOSI = 24 ## GPIO Pin 18
 SPICS = 25 ## GPIO Pin 22
 
 ## Small FSR's connected to ADC
-fsr_adc_red = 0 ## Red on Channel 0
-fsr_adc_yellow = 2 ## Yellow on Channel 2
-fsr_adc_green = 4 ## Green on Channel 4
+fsr_adc_red = 0; ## Red on Channel 0
+fsr_adc_yellow = 2; ## Yellow on Channel 2
+fsr_adc_green = 4; ## Green on Channel 4
 
 # LED GPIO numbers(BCM)
 red_led = 21 ## Red - GPIO Pin 40
@@ -137,7 +137,7 @@ while True:
                 #print "block_inserted_red", block_inserted_red ## Red
                 #print "block_inserted_yellow", block_inserted_yellow ## Yellow
                 #print "block_inserted_green", block_inserted_green ## Green
-        print "Green Sensor Reading:" fsr_signal_green ## Green
+        print "Green Sensor Reading:", fsr_signal_green ## Green
         print "block_inserted_green", block_inserted_green ## Green
         
         ## RED
