@@ -160,7 +160,7 @@ while True:
                 last_fsr_read_red = fsr_adjust_red
                 
         ## YELLOW
-        if ( trim_pot_changed_yellow ):
+        if ( block_inserted_yellow ):
                 yellow_block_in() 
                 #set_volume_yellow = trim_pot_yellow / 10.24           # convert 10bit adc0 (0$
                 #set_volume_yellow = round(set_volume_yellow)          # round out decimal val$
@@ -178,7 +178,7 @@ while True:
                 last_fsr_read_yellow = fsr_adjust_yellow
                 
         ## GREEN
-        if ( trim_pot_changed_green ):
+        if ( block_inserted_green ):
                 green_block_in() 
                 #set_volume_green = trim_pot_green / 10.24           # convert 10bit adc0 (0$
                 #set_volume_green = round(set_volume_green)          # round out decimal val$
