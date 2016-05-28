@@ -10,7 +10,7 @@ import time
 import os
 import RPi.GPIO as GPIO
 
-GPIO.setmode(GPIO.BCM)
+#GPIO.setmode(GPIO.BCM)
 #DEBUG = 1
 
 # read SPI data from MCP3008 chip, 8 possible adc's (0 thru 7)
@@ -55,14 +55,18 @@ SPIMOSI = 24 ## GPIO Pin 18
 SPICS = 25 ## (CS/SHDN) GPIO Pin 22
 
 ## Small FSR's connected to ADC
-fsr_adc_red = 0 ## Red on Channel 0
-fsr_adc_yellow = 2 ## Yellow on Channel 2
-fsr_adc_green = 4 ## Green on Channel 4
+fsr_adc_red = 0; ## Red on Channel 0
+fsr_adc_yellow = 2; ## Yellow on Channel 2
+fsr_adc_green = 4; ## Green on Channel 4
 
 # LED GPIO numbers(BCM)
-red_led = 21 ## Red - GPIO Pin 40
-yellow_led = 20 # Yellow - GPIO Pin 38
-green_led = 5 # Green - GPIO Pin 29
+red_led = 21; ## Red - GPIO Pin 40
+yellow_led = 20; # Yellow - GPIO Pin 38
+green_led = 5; # Green - GPIO Pin 29
+
+global GPIO
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
 
 # Set up LED GPIO pins
 GPIO.setup(red_led, GPIO.OUT) ## Red
@@ -101,9 +105,9 @@ while True:
         block_inserted_green = False ## Green
 
         ## Read the signals from the FSR's
-        fsr_signal_red = readadc(0, SPICLK, SPIMOSI, SPIMISO, SPICS) ## Red
-        fsr_signal_yellow = readadc(2, SPICLK, SPIMOSI, SPIMISO, SPICS) ## Yellow
-        fsr_signal_green = readadc(4, SPICLK, SPIMOSI, SPIMISO, SPICS) ## Green
+        fsr_signal_red = readadc(fsr_adc_red, SPICLK, SPIMOSI, SPIMISO, SPICS) ## Red
+        fsr_signal_yellow = readadc(fsr_adc_yellow, SPICLK, SPIMOSI, SPIMISO, SPICS) ## Yellow
+        fsr_signal_green = readadc(fsr_adc_green, SPICLK, SPIMOSI, SPIMISO, SPICS) ## Green
         
         ## How much has it changed since the last read?
         #fsr_adjust_red = abs(fsr_signal_red - last_fsr_read_red) ## Red
