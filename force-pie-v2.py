@@ -4,7 +4,7 @@
 # This code is released into the public domain
 
 # HEAVILY MODIFIED BY m42-k!
-# Raspberry Pi Model B+ Used
+# Raspberry Pi Model B+ Used 
 
 import time
 import os
