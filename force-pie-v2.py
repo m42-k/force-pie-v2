@@ -11,7 +11,7 @@ import os
 import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BCM)
-DEBUG = 1
+#DEBUG = 1
 
 # read SPI data from MCP3008 chip, 8 possible adc's (0 thru 7)
 def readadc(adcnum, clockpin, mosipin, misopin, cspin): 
@@ -86,9 +86,9 @@ def green_block_in(): ## Green
         GPIO.output(green_led, block_inserted_green)
 
 ## Keep track of the last FSR value
-last_fsr_read_red = 0 ## Red
-last_fsr_read_yellow = 0 ## Yellow
-last_fsr_read_green = 0 ## Green
+#last_fsr_read_red = 0 ## Red
+#last_fsr_read_yellow = 0 ## Yellow
+#last_fsr_read_green = 0 ## Green
 
 ## Add a tolerance for sensitivity
 tolerance = 5       # to keep from being jittery we'll only do an action
@@ -106,23 +106,23 @@ while True:
         fsr_signal_green = readadc(fsr_adc_green, SPICLK, SPIMOSI, SPIMISO, SPICS) ## Green
         
         ## How much has it changed since the last read?
-        fsr_adjust_red = abs(fsr_signal_red - last_fsr_read_red) ## Red
-        fsr_adjust_yellow = abs(fsr_signal_yellow - last_fsr_read_yellow) ## Yellow
-        fsr_adjust_green = abs(fsr_signal_green - last_fsr_read_green) ## Green
+        #fsr_adjust_red = abs(fsr_signal_red - last_fsr_read_red) ## Red
+        #fsr_adjust_yellow = abs(fsr_signal_yellow - last_fsr_read_yellow) ## Yellow
+        #fsr_adjust_green = abs(fsr_signal_green - last_fsr_read_green) ## Green
         
-        if DEBUG:
+        #if DEBUG:
                 ## Red
-                print "fsr_signal_red:", fsr_signal_red
-                print "fsr_adjust_yellow:", fsr_adjust_yellow
-                print "last_fsr_read_red", last_fsr_read_red
+                #print "fsr_signal_red:", fsr_signal_red
+                #print "fsr_adjust_yellow:", fsr_adjust_yellow
+                #print "last_fsr_read_red", last_fsr_read_red
                 ## Yellow
-                print "fsr_signal_yellow:", fsr_signal_yellow
-                print "fsr_adjust_yellow:", fsr_adjust_yellow
-                print "last_fsr_read_yellow", last_fsr_read_yellow
+                #print "fsr_signal_yellow:", fsr_signal_yellow
+                #print "fsr_adjust_yellow:", fsr_adjust_yellow
+                #print "last_fsr_read_yellow", last_fsr_read_yellow
                 ## Green
-                print "fsr_signal_green:", fsr_signal_green
-                print "fsr_adjust_green:", fsr_adjust_green
-                print "last_fsr_read_green", last_fsr_read_green
+                #print "fsr_signal_green:", fsr_signal_green
+                #print "fsr_adjust_green:", fsr_adjust_green
+                #print "last_fsr_read_green", last_fsr_read_green
         ## Red
         if fsr_signal_red > tolerance:
                block_inserted_red = True
@@ -133,10 +133,13 @@ while True:
         if fsr_signal_green > tolerance: 
                block_inserted_green = True
 
-        if DEBUG:
-                print "block_inserted_red", block_inserted_red ## Red
-                print "block_inserted_yellow", block_inserted_yellow ## Yellow
-                print "block_inserted_green", block_inserted_green ## Green
+        #if DEBUG:
+                #print "block_inserted_red", block_inserted_red ## Red
+                #print "block_inserted_yellow", block_inserted_yellow ## Yellow
+                #print "block_inserted_green", block_inserted_green ## Green
+        print "block_inserted_red", block_inserted_red ## Red
+        print "block_inserted_yellow", block_inserted_yellow ## Yellow
+        print "block_inserted_green", block_inserted_green ## Green
         
         ## RED
         if block_inserted_red is True:
@@ -154,7 +157,7 @@ while True:
                         #print "trim_pot_changed", set_volume
 
                 ## Save the FSR reading for the next loop
-                last_fsr_read_red = fsr_adjust_red
+                #last_fsr_read_red = fsr_adjust_red
                 #time.sleep(0.5)
                 #GPIO.output(green_led, False)
                 
@@ -174,7 +177,7 @@ while True:
                         #print "trim_pot_changed_yellow", set_volume_yellow
 
                 ## Save the FSR reading for the next loop
-                last_fsr_read_yellow = fsr_adjust_yellow
+                #last_fsr_read_yellow = fsr_adjust_yellow
                 #time.sleep(0.5)
                 #GPIO.output(yellow_led, False)
                 
@@ -194,7 +197,7 @@ while True:
                         #print "trim_pot_changed_green", set_volume_green
 
                 ## Save the FSR reading for the next loop
-                last_fsr_read_green = fsr_adjust_green
+                #last_fsr_read_green = fsr_adjust_green
                 #time.sleep(0.5)
                 #GPIO.output(green_led, False)
 
