@@ -128,13 +128,13 @@ while True:
                 #print "fsr_adjust_green:", fsr_adjust_green
                 #print "last_fsr_read_green", last_fsr_read_green
         ## Red
-        if fsr_signal_red > tolerance:
+        if fsr_signal_red < tolerance:
                block_inserted_red = True
         ## Yellow
-        if fsr_signal_yellow > tolerance:
+        if fsr_signal_yellow < tolerance:
                block_inserted_yellow = True
         ## Green
-        if fsr_signal_green > tolerance: 
+        if fsr_signal_green < tolerance: 
                block_inserted_green = True
 
         #if DEBUG:
