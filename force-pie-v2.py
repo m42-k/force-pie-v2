@@ -76,16 +76,16 @@ GPIO.setup(SPICLK, GPIO.OUT)
 GPIO.setup(SPICS, GPIO.OUT)
 
 # Functions that run on Force Detection
-def red_block_in():
-        GPIO.output(red_led, trim_pot_changed)
+def red_block_in(): ## Red
+        GPIO.output(red_led, block_inserted_red)
         time.sleep(1)
-
-def green_block_in():
-        GPIO.output(green_led, trim_pot_changed_green)
+        
+def yellow_block_in(): ## Yellow
+        GPIO.output(yellow_led, block_inserted_yellow)
         time.sleep(1)
-
-def yellow_block_in():
-        GPIO.output(yellow_led, trim_pot_changed_yellow)
+        
+def green_block_in(): ## Green
+        GPIO.output(green_led, block_inserted_green)
         time.sleep(1)
 
 ## Keep track of the last FSR value
