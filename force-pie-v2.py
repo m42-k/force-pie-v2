@@ -137,8 +137,7 @@ while True:
                 #print "block_inserted_red", block_inserted_red ## Red
                 #print "block_inserted_yellow", block_inserted_yellow ## Yellow
                 #print "block_inserted_green", block_inserted_green ## Green
-        print "block_inserted_red", block_inserted_red ## Red
-        print "block_inserted_yellow", block_inserted_yellow ## Yellow
+        print "Green Sensor Reading:" fsr_signal_green ## Green
         print "block_inserted_green", block_inserted_green ## Green
         
         ## RED
