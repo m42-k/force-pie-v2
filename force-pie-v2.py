@@ -91,7 +91,7 @@ last_fsr_read_yellow = 0 ## Yellow
 last_fsr_read_green = 0 ## Green
 
 ## Add a tolerance for sensitivity
-tolerance = 5       # to keep from being jittery we'll only do an action
+tolerance = 95       # to keep from being jittery we'll only do an action
                     # when the force detected is over this amount
                     
 while True:
@@ -124,13 +124,13 @@ while True:
                 print "fsr_adjust_green:", fsr_adjust_green
                 print "last_fsr_read_green", last_fsr_read_green
         ## Red
-        if ( fsr_adjust_red > tolerance ):
+        if ( fsr_adjust_red < tolerance ):
                block_inserted_red = True
         ## Yellow
-        if ( fsr_adjust_yellow > tolerance ):
+        if ( fsr_adjust_yellow < tolerance ):
                block_inserted_yellow = True
         ## Green
-        if ( fsr_adjust_green > tolerance ): 
+        if ( fsr_adjust_green < tolerance ): 
                block_inserted_green = True
 
         if DEBUG:
@@ -139,11 +139,11 @@ while True:
                 print "block_inserted_green", block_inserted_green ## Green
         
         ## RED
-        if ( block_inserted_red ):
+        if block_inserted_red is True:
                 red_block_in()
-                range_100_red = fsr_signal_red / 10.24           # convert 10bit adc0 (0-1024) trim pot read into 0-100 volume level
-                range_100_red = round(range_100_red)          # round out decimal value
-                range_100_red = int(range_100_red)            # cast volume as integer
+                #range_100_red = fsr_signal_red / 10.24           # convert 10bit adc0 (0-1024) trim pot read into 0-100 volume level
+                #range_100_red = round(range_100_red)          # round out decimal value
+                #range_100_red = int(range_100_red)            # cast volume as integer
 
                 #print 'Volume = {volume}%' .format(volume = set_volume)
                 #set_vol_cmd = 'sudo amixer cset numid=1 -- {volume}% > /dev/null' .format(volume = set_volume)
@@ -155,15 +155,15 @@ while True:
 
                 ## Save the FSR reading for the next loop
                 last_fsr_read_red = fsr_adjust_red
-                time.sleep(0.5)
-                GPIO.output(green_led, False)
+                #time.sleep(0.5)
+                #GPIO.output(green_led, False)
                 
         ## YELLOW
         if ( block_inserted_yellow ):
                 yellow_block_in() 
-                range_100_yellow = fsr_signal_yellow / 10.24           # convert 10bit adc0 (0$
-                range_100_yellow = round(range_100_yellow)          # round out decimal val$
-                range_100_yellow = int(range_100_yellow)            # cast volume as integer
+                #range_100_yellow = fsr_signal_yellow / 10.24           # convert 10bit adc0 (0$
+                #range_100_yellow = round(range_100_yellow)          # round out decimal val$
+                #range_100_yellow = int(range_100_yellow)            # cast volume as integer
 
                 #print 'Volume = {volume_yellow}%' .format(volume_yellow = set_volume_yellow)
                 #set_vol_cmd_yellow = 'sudo amixer cset numid=1 -- {volume_yellow}% > /dev/null' .format(volume_yellow = set_volume_yellow)
@@ -175,15 +175,15 @@ while True:
 
                 ## Save the FSR reading for the next loop
                 last_fsr_read_yellow = fsr_adjust_yellow
-                time.sleep(0.5)
-                GPIO.output(yellow_led, False)
+                #time.sleep(0.5)
+                #GPIO.output(yellow_led, False)
                 
         ## GREEN
         if ( block_inserted_green ):
                 green_block_in() 
-                range_100_green = fsr_signal_green / 10.24           # convert 10bit adc0 (0$
-                range_100_green = round(range_100_green)          # round out decimal val$
-                range_100_green = int(range_100_green)            # cast volume as integer
+                #range_100_green = fsr_signal_green / 10.24           # convert 10bit adc0 (0$
+                #range_100_green = round(range_100_green)          # round out decimal val$
+                #range_100_green = int(range_100_green)            # cast volume as integer
 
                 #print 'Volume = {volume_green}%' .format(volume_green = set_volume_green)
                 #set_vol_cmd_green = 'sudo amixer cset numid=1 -- {volume_green}% > /dev/null' .format(volume_green = set_volume_green)
@@ -195,13 +195,16 @@ while True:
 
                 ## Save the FSR reading for the next loop
                 last_fsr_read_green = fsr_adjust_green
-                time.sleep(0.5)
-                GPIO.output(green_led, False)
+                #time.sleep(0.5)
+                #GPIO.output(green_led, False)
 
         ## Hang out and do nothing for a half second
-        #time.sleep(0.5)
+        time.sleep(0.5)
         
         ## Turn LED's Off
-        #GPIO.output(red_led, False)
-        #GPIO.output(yellow_led, False)
-        #GPIO.output(green_led, False)
+        block_inserted_red = True
+        block_inserted_yellow = True
+        block_inserted_green = True
+        GPIO.output(red_led, block_inserted_red)
+        GPIO.output(yellow_led, block_inserted_yellow)
+        GPIO.output(green_led, block_inserted_green)
