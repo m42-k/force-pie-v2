@@ -57,12 +57,12 @@ SPICS = 25 ## GPIO Pin 22
 ## Small FSR's connected to ADC
 fsr_adc_red = 0; ## Red on Channel 0
 fsr_adc_yellow = 2; ## Yellow on Channel 2
-fsr_adc_green = 4; ## Green on Channel 4
+fsr_adc_green = 6; ## Green on Channel 6
 
 # LED GPIO numbers(BCM)
 red_led = 21 ## Red - GPIO Pin 40
 yellow_led = 20 # Yellow - GPIO Pin 38
-green_led = 13 # Green - GPIO Pin 33
+green_led = 5 # Green - GPIO Pin 29
 
 # Set up LED GPIO pins
 GPIO.setup(red_led, GPIO.OUT) ## Red
@@ -124,13 +124,13 @@ while True:
                 print "fsr_adjust_green:", fsr_adjust_green
                 print "last_fsr_read_green", last_fsr_read_green
         ## Red
-        if ( fsr_signal_red > tolerance ):
+        if fsr_signal_red > tolerance:
                block_inserted_red = True
         ## Yellow
-        if ( fsr_signal_yellow > tolerance ):
+        if fsr_signal_yellow > tolerance:
                block_inserted_yellow = True
         ## Green
-        if ( fsr_signal_green > tolerance ): 
+        if fsr_signal_green > tolerance: 
                block_inserted_green = True
 
         if DEBUG:
@@ -159,7 +159,7 @@ while True:
                 #GPIO.output(green_led, False)
                 
         ## YELLOW
-        if ( block_inserted_yellow ):
+        if block_inserted_yellow is True:
                 yellow_block_in() 
                 #range_100_yellow = fsr_signal_yellow / 10.24           # convert 10bit adc0 (0$
                 #range_100_yellow = round(range_100_yellow)          # round out decimal val$
@@ -179,7 +179,7 @@ while True:
                 #GPIO.output(yellow_led, False)
                 
         ## GREEN
-        if ( block_inserted_green ):
+        if block_inserted_green is True:
                 green_block_in() 
                 #range_100_green = fsr_signal_green / 10.24           # convert 10bit adc0 (0$
                 #range_100_green = round(range_100_green)          # round out decimal val$
