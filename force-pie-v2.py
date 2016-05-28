@@ -77,12 +77,15 @@ GPIO.setup(SPICS, GPIO.OUT)
 # Functions that run on Force Detection
 def red_block_in():
         GPIO.output(red_led, trim_pot_changed)
+        time.sleep(1)
 
 def green_block_in():
         GPIO.output(green_led, trim_pot_changed_green)
+        time.sleep(1)
 
 def yellow_block_in():
         GPIO.output(yellow_led, trim_pot_changed_yellow)
+        time.sleep(1)
 
 ## Keep track of the last FSR value
 last_fsr_read_red = 0 ## Red
@@ -96,7 +99,7 @@ tolerance = 5       # to keep from being jittery we'll only do an action
 while True:
         ## we'll assume that the blocks haven't been inserted yet
         block_inserted_red = False ## Red
-        block_inserted_yellow = False ## Yello
+        block_inserted_yellow = False ## Yellow
         block_inserted_green = False ## Green
 
         ## Read the signals from the FSR's
@@ -158,38 +161,38 @@ while True:
         ## YELLOW
         if ( trim_pot_changed_yellow ):
                 yellow_block_in() 
-                set_volume_yellow = trim_pot_yellow / 10.24           # convert 10bit adc0 (0$
-                set_volume_yellow = round(set_volume_yellow)          # round out decimal val$
-                set_volume_yellow = int(set_volume_yellow)            # cast volume as integer
+                #set_volume_yellow = trim_pot_yellow / 10.24           # convert 10bit adc0 (0$
+                #set_volume_yellow = round(set_volume_yellow)          # round out decimal val$
+                #set_volume_yellow = int(set_volume_yellow)            # cast volume as integer
 
-                print 'Volume = {volume_yellow}%' .format(volume_yellow = set_volume_yellow)
-                set_vol_cmd_yellow = 'sudo amixer cset numid=1 -- {volume_yellow}% > /dev/null' .format(volume_yellow = set_volume_yellow)
-                os.system(set_vol_cmd_yellow)  # set volume
+                #print 'Volume = {volume_yellow}%' .format(volume_yellow = set_volume_yellow)
+                #set_vol_cmd_yellow = 'sudo amixer cset numid=1 -- {volume_yellow}% > /dev/null' .format(volume_yellow = set_volume_yellow)
+                #os.system(set_vol_cmd_yellow)  # set volume
                 
-                if DEBUG:
-                        print "set_volume_yellow", set_volume_yellow
-                        print "trim_pot_changed_yellow", set_volume_yellow
+                #if DEBUG:
+                        #print "set_volume_yellow", set_volume_yellow
+                        #print "trim_pot_changed_yellow", set_volume_yellow
 
                 # save the potentiometer reading for the next loop 
-                last_read_yellow = trim_pot_yellow
+                last_fsr_read_yellow = fsr_adjust_yellow
                 
         ## GREEN
         if ( trim_pot_changed_green ):
                 green_block_in() 
-                set_volume_green = trim_pot_green / 10.24           # convert 10bit adc0 (0$
-                set_volume_green = round(set_volume_green)          # round out decimal val$
-                set_volume_green = int(set_volume_green)            # cast volume as integer
+                #set_volume_green = trim_pot_green / 10.24           # convert 10bit adc0 (0$
+                #set_volume_green = round(set_volume_green)          # round out decimal val$
+                #set_volume_green = int(set_volume_green)            # cast volume as integer
 
-                print 'Volume = {volume_green}%' .format(volume_green = set_volume_green)
-                set_vol_cmd_green = 'sudo amixer cset numid=1 -- {volume_green}% > /dev/null' .format(volume_green = set_volume_green)
-                os.system(set_vol_cmd_green)  # set volume
+                #print 'Volume = {volume_green}%' .format(volume_green = set_volume_green)
+                #set_vol_cmd_green = 'sudo amixer cset numid=1 -- {volume_green}% > /dev/null' .format(volume_green = set_volume_green)
+                #os.system(set_vol_cmd_green)  # set volume
                 
-                if DEBUG:
-                        print "set_volume_green", set_volume_green
-                        print "trim_pot_changed_green", set_volume_green
+                #if DEBUG:
+                        #print "set_volume_green", set_volume_green
+                        #print "trim_pot_changed_green", set_volume_green
 
                 # save the potentiometer reading for the next loop  
-                last_read_green = trim_pot_green
+                last_fsr_read_green = fsr_adjust_green
 
         # hang out and do nothing for a half second
         time.sleep(0.5)
