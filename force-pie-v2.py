@@ -124,13 +124,13 @@ while True:
                 print "fsr_adjust_green:", fsr_adjust_green
                 print "last_fsr_read_green", last_fsr_read_green
         ## Red
-        if ( fsr_signal_red > tolerance ):
+        if ( fsr_adjust_red > tolerance ):
                block_inserted_red = True
         ## Yellow
-        if ( fsr_signal_yellow > tolerance ):
+        if ( fsr_adjust_yellow > tolerance ):
                block_inserted_yellow = True
         ## Green
-        if ( fsr_signal_green > tolerance ): 
+        if ( fsr_adjust_green > tolerance ): 
                block_inserted_green = True
 
         if DEBUG:
@@ -202,9 +202,9 @@ while True:
         time.sleep(0.5)
         
         ## Turn LED's Off
-        block_inserted_red = True
-        block_inserted_yellow = True
-        block_inserted_green = True
+        block_inserted_red = False
+        block_inserted_yellow = False
+        block_inserted_green = False
         GPIO.output(red_led, block_inserted_red)
         GPIO.output(yellow_led, block_inserted_yellow)
         GPIO.output(green_led, block_inserted_green)
