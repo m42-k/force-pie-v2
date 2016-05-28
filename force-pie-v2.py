@@ -91,7 +91,7 @@ last_fsr_read_yellow = 0 ## Yellow
 last_fsr_read_green = 0 ## Green
 
 ## Add a tolerance for sensitivity
-tolerance = 95       # to keep from being jittery we'll only do an action
+tolerance = 5       # to keep from being jittery we'll only do an action
                     # when the force detected is over this amount
                     
 while True:
