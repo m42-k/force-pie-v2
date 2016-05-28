@@ -78,15 +78,12 @@ GPIO.setup(SPICS, GPIO.OUT)
 # Functions that run on Force Detection
 def red_block_in(): ## Red
         GPIO.output(red_led, block_inserted_red)
-        time.sleep(1)
         
 def yellow_block_in(): ## Yellow
         GPIO.output(yellow_led, block_inserted_yellow)
-        time.sleep(1)
         
 def green_block_in(): ## Green
         GPIO.output(green_led, block_inserted_green)
-        time.sleep(1)
 
 ## Keep track of the last FSR value
 last_fsr_read_red = 0 ## Red
@@ -144,7 +141,7 @@ while True:
         ## RED
         if ( block_inserted_red ):
                 red_block_in()
-                #set_volume = trim_pot / 10.24           # convert 10bit adc0 (0-1024) trim pot read into 0-100 volume level
+                #range_100_red = fsr_signal_red / 10.24           # convert 10bit adc0 (0-1024) trim pot read into 0-100 volume level
                 #set_volume = round(set_volume)          # round out decimal value
                 #set_volume = int(set_volume)            # cast volume as integer
 
