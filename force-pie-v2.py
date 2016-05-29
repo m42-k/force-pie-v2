@@ -13,6 +13,8 @@ global GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
+os.system(‘sudo amixer cset numid=3 1’)
+
 DEBUG = 0
 
 ## read SPI data from MCP3008 chip, 8 possible adc's (0 thru 7)
@@ -56,15 +58,15 @@ SPIMISO = 23 ## GPIO Pin 16
 SPIMOSI = 24 ## GPIO Pin 18
 SPICS = 25 ## (CS/SHDN) GPIO Pin 22
 
-## Small FSR's connected to ADC
-fsr_adc_red = 1; ## Red on Channel 1
-fsr_adc_yellow = 2; ## Yellow on Channel 2
-fsr_adc_green = 0; ## Green on Channel 0
-
 ## LED GPIO numbers(BCM)
 red_led = 21; ## Red - GPIO Pin 40
 yellow_led = 20; # Yellow - GPIO Pin 38
 green_led = 13; # Green - GPIO Pin 33
+
+## Small FSR's connected to ADC
+fsr_adc_red = 1; ## Red on Channel 1
+fsr_adc_yellow = 2; ## Yellow on Channel 2
+fsr_adc_green = 0; ## Green on Channel 0
 
 ## Set up LED GPIO pins
 GPIO.setup(red_led, GPIO.OUT) ## Red
@@ -84,27 +86,16 @@ block_inserted_green = False ## Green
 
 # Functions that run on Force Detection
 def red_block_in(): ## Red
-        #global block_inserted_red
+        os.system(‘kids-toy-box.mp3’)
         GPIO.output(red_led, True)
-        #time.sleep(1)
-        #GPIO.output(red_led, False)
-        #block_inserted_red = False
         return block_inserted_red
         
 def yellow_block_in(): ## Yellow
-        #global block_inserted_yellow
         GPIO.output(yellow_led, True)
-        #time.sleep(1)
-        #GPIO.output(yellow_led, False)
-        #block_inserted_yellow = False
         return block_inserted_yellow
         
 def green_block_in(): ## Green
-        #global block_inserted_green
         GPIO.output(green_led, True)
-        #time.sleep(1)
-        #GPIO.output(green_led, False)
-        #block_inserted_green = False
         return block_inserted_green
 
 ## Keep track of the last FSR value
@@ -112,15 +103,11 @@ last_fsr_read_red = 0 ## Red
 last_fsr_read_yellow = 0 ## Yellow
 last_fsr_read_green = 0 ## Green
 
-## Add a tolerance for sensitivity
-tolerance = 5       # to keep from being jittery we'll only do an action
-                    # when the force detected is over this amount
+## Add a tolerance for FSR sensitivity
+tolerance = 5
                     
 while True:
         ## We'll assume that the blocks haven't been inserted yet
-        #global block_inserted_red
-        #global block_inserted_yellow
-        #global block_inserted_green
         block_inserted_red = False ## Red
         block_inserted_yellow = False ## Yellow
         block_inserted_green = False ## Green
@@ -166,27 +153,14 @@ while True:
         ## RED
         if block_inserted_red is True:
                 red_block_in()
-                #range_100_red = fsr_signal_red / 10.24           # convert 10bit adc0 (0-1024) trim pot read into 0-100 volume level
-                #range_100_red = round(range_100_red)          # round out decimal value
-                #range_100_red = int(range_100_red)            # cast volume as integer
                 
-                #print 'Volume = {volume}%' .format(volume = set_volume)
-                #set_vol_cmd = 'sudo amixer cset numid=1 -- {volume}% > /dev/null' .format(volume = set_volume)
-                #os.system(set_vol_cmd)  # set volume
-                
-                #if DEBUG:
-                        #print "fsr_adjust_red", fsr_adjust_red
-                        
                 ## Save the FSR reading for the next loop
                 last_fsr_read_red = fsr_signal_red
                 
         ## YELLOW
         if block_inserted_yellow is True:
                 yellow_block_in() 
-                
-                #if DEBUG:
-                        #print "fsr_adjust_yellow", fsr_adjust_yellow
-                        
+
                 ## Save the FSR reading for the next loop
                 last_fsr_read_yellow = fsr_signal_yellow
                 
@@ -194,9 +168,6 @@ while True:
         if block_inserted_green is True:
                 green_block_in()
                 
-                #if DEBUG:
-                        #print "fsr_adjust_green", fsr_adjust_green
-                        
                 ## Save the FSR reading for the next loop
                 last_fsr_read_green = fsr_signal_green
 
