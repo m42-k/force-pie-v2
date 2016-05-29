@@ -87,7 +87,7 @@ block_inserted_green = False ## Green
 # Functions that run on Force Detection
 def red_block_in(): ## Red
         global block_inserted_red
-        GPIO.output(red_led, block_inserted_red)
+        GPIO.output(red_led, True)
         time.sleep(0.5)
         GPIO.output(red_led, False)
         block_inserted_red = False
@@ -95,7 +95,7 @@ def red_block_in(): ## Red
         
 def yellow_block_in(): ## Yellow
         global block_inserted_yellow
-        GPIO.output(yellow_led, block_inserted_yellow)
+        GPIO.output(yellow_led, True)
         time.sleep(0.5)
         GPIO.output(yellow_led, False)
         block_inserted_yellow = False
@@ -103,7 +103,7 @@ def yellow_block_in(): ## Yellow
         
 def green_block_in(): ## Green
         global block_inserted_green
-        GPIO.output(green_led, block_inserted_green)
+        GPIO.output(green_led, True)
         time.sleep(0.5)
         GPIO.output(green_led, False)
         block_inserted_green = False
@@ -226,7 +226,7 @@ while True:
                 last_fsr_read_green = fsr_signal_green
 
         ## Hang out and do nothing for a half second
-        time.sleep(0.5)
+        time.sleep(0.3)
         
         ## Turn LED's Off
         #GPIO.output(red_led, False)
