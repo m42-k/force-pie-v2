@@ -96,7 +96,7 @@ def yellow_block_in(): ## Yellow
         return block_inserted_yellow
         
 def green_block_in(): ## Green
-        os.system('mpg321 kids-toy-wav.wav -q') 
+        os.system('mpg321 kids-toy-box-wav.wav -q') 
         GPIO.output(green_led, True)
         return block_inserted_green
 
