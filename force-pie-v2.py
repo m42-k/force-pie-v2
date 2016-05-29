@@ -11,7 +11,7 @@ import RPi.GPIO as GPIO
 
 global GPIO
 GPIO.setmode(GPIO.BCM)
-GPIO.setwarnings(False)
+GPIO.setwarnings(False) 
 
 os.system('sudo amixer cset numid=3 1')
 
