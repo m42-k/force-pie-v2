@@ -6,8 +6,6 @@
 # HEAVILY MODIFIED BY m42-k! 
 # Raspberry Pi Model B+ Used
 
-# FORCE UPDATE!
-
 import time
 import os
 import RPi.GPIO as GPIO
