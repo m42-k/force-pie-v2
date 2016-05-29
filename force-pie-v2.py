@@ -13,9 +13,6 @@ global GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False) 
 
-os.system('sudo amixer cset numid=3 1')
-os.system('sudo modprobe snd-bcm2835')
-
 DEBUG = 0
 
 ## read SPI data from MCP3008 chip, 8 possible adc's (0 thru 7)
@@ -87,17 +84,14 @@ block_inserted_green = False ## Green
 
 # Functions that run on Force Detection
 def red_block_in(): ## Red
-        os.system('mpg321 kids-toy-box-wav.wav -q') 
         GPIO.output(red_led, True)
         return block_inserted_red
         
 def yellow_block_in(): ## Yellow
-        os.system('mpg321 kids-toy-box-wav.wav -q') 
         GPIO.output(yellow_led, True)
         return block_inserted_yellow
         
 def green_block_in(): ## Green
-        os.system('mpg321 kids-toy-box-wav.wav -q') 
         GPIO.output(green_led, True)
         return block_inserted_green
 
