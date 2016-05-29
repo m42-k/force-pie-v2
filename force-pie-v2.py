@@ -106,6 +106,9 @@ tolerance = 5       # to keep from being jittery we'll only do an action
                     
 while True:
         ## we'll assume that the blocks haven't been inserted yet
+        global block_inserted_red
+        global block_inserted_yellow
+        global block_inserted_green
         block_inserted_red = False ## Red
         block_inserted_yellow = False ## Yellow
         block_inserted_green = False ## Green
