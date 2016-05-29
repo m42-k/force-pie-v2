@@ -13,7 +13,7 @@ global GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
-os.system(‘sudo amixer cset numid=3 1’)
+os.system('sudo amixer cset numid=3 1')
 
 DEBUG = 0
 
@@ -86,15 +86,17 @@ block_inserted_green = False ## Green
 
 # Functions that run on Force Detection
 def red_block_in(): ## Red
-        os.system(‘kids-toy-box.mp3’)
+        os.system('kids-toy-box.mp3')
         GPIO.output(red_led, True)
         return block_inserted_red
         
 def yellow_block_in(): ## Yellow
+        os.system('kids-toy-box.mp3')
         GPIO.output(yellow_led, True)
         return block_inserted_yellow
         
 def green_block_in(): ## Green
+        os.system('kids-toy-box.mp3')
         GPIO.output(green_led, True)
         return block_inserted_green
 
