@@ -174,8 +174,8 @@ while True:
                 #set_vol_cmd = 'sudo amixer cset numid=1 -- {volume}% > /dev/null' .format(volume = set_volume)
                 #os.system(set_vol_cmd)  # set volume
                 
-                if DEBUG:
-                        print "fsr_adjust_red", fsr_adjust_red
+                #if DEBUG:
+                        #print "fsr_adjust_red", fsr_adjust_red
                         
                 ## Save the FSR reading for the next loop
                 last_fsr_read_red = fsr_signal_red
@@ -184,8 +184,8 @@ while True:
         if block_inserted_yellow is True:
                 yellow_block_in() 
                 
-                if DEBUG:
-                        print "fsr_adjust_yellow", fsr_adjust_yellow
+                #if DEBUG:
+                        #print "fsr_adjust_yellow", fsr_adjust_yellow
                         
                 ## Save the FSR reading for the next loop
                 last_fsr_read_yellow = fsr_signal_yellow
@@ -194,8 +194,8 @@ while True:
         if block_inserted_green is True:
                 green_block_in()
                 
-                if DEBUG:
-                        print "fsr_adjust_green", fsr_adjust_green
+                #if DEBUG:
+                        #print "fsr_adjust_green", fsr_adjust_green
                         
                 ## Save the FSR reading for the next loop
                 last_fsr_read_green = fsr_signal_green
