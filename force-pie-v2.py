@@ -9,9 +9,9 @@ import time
 import os
 import RPi.GPIO as GPIO
 
+global GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
-global GPIO
 
 DEBUG = 0
 
@@ -84,7 +84,7 @@ block_inserted_green = False ## Green
 
 # Functions that run on Force Detection
 def red_block_in(): ## Red
-        global block_inserted_red
+        #global block_inserted_red
         GPIO.output(red_led, True)
         #time.sleep(1)
         #GPIO.output(red_led, False)
@@ -92,7 +92,7 @@ def red_block_in(): ## Red
         return block_inserted_red
         
 def yellow_block_in(): ## Yellow
-        global block_inserted_yellow
+        #global block_inserted_yellow
         GPIO.output(yellow_led, True)
         #time.sleep(1)
         #GPIO.output(yellow_led, False)
@@ -100,7 +100,7 @@ def yellow_block_in(): ## Yellow
         return block_inserted_yellow
         
 def green_block_in(): ## Green
-        global block_inserted_green
+        #global block_inserted_green
         GPIO.output(green_led, True)
         #time.sleep(1)
         #GPIO.output(green_led, False)
