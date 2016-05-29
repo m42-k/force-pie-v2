@@ -3,7 +3,7 @@
 ## Base code written by Limor "Ladyada" Fried for Adafruit Industries, (c) 2015
 ## This code is released into the public domain 
 ## HEAVILY MODIFIED BY m42-k!
-## Raspberry Pi Model B/B+
+## Raspberry Pi Model B+
 
 import time
 import os
