@@ -86,17 +86,17 @@ block_inserted_green = False ## Green
 
 # Functions that run on Force Detection
 def red_block_in(): ## Red
-        os.system('mpg321 kids-toy-box.mp3 -q &')
+        os.system('mpg321 kids-toy-box.mp3 -q')
         GPIO.output(red_led, True)
         return block_inserted_red
         
 def yellow_block_in(): ## Yellow
-        os.system('mpg321 kids-toy-box.mp3 -q &')
+        os.system('mpg321 kids-toy-box.mp3 -q')
         GPIO.output(yellow_led, True)
         return block_inserted_yellow
         
 def green_block_in(): ## Green
-        os.system('mpg321 kids-toy-box.mp3 -q &')
+        os.system('mpg321 kids-toy-box.mp3 -q')
         GPIO.output(green_led, True)
         return block_inserted_green
 
