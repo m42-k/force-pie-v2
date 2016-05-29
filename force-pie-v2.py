@@ -14,6 +14,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False) 
 
 os.system('sudo amixer cset numid=3 1')
+os.system('sudo modprobe snd-bcm2835')
 
 DEBUG = 0
 
