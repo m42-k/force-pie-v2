@@ -89,24 +89,24 @@ def red_block_in(): ## Red
         global block_inserted_red
         GPIO.output(red_led, block_inserted_red)
         time.sleep(0.5)
+        GPIO.output(red_led, False)
         block_inserted_red = False
-        GPIO.output(red_led, block_inserted_red)
         return block_inserted_red
         
 def yellow_block_in(): ## Yellow
         global block_inserted_yellow
         GPIO.output(yellow_led, block_inserted_yellow)
         time.sleep(0.5)
+        GPIO.output(yellow_led, False)
         block_inserted_yellow = False
-        GPIO.output(yellow_led, block_inserted_yellow)
         return block_inserted_yellow
         
 def green_block_in(): ## Green
         global block_inserted_green
         GPIO.output(green_led, block_inserted_green)
         time.sleep(0.5)
+        GPIO.output(green_led, False)
         block_inserted_green = False
-        GPIO.output(green_led, block_inserted_green)
         return block_inserted_green
 
 ## Keep track of the last FSR value
