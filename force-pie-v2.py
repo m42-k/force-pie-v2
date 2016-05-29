@@ -55,9 +55,9 @@ SPIMOSI = 24 ## GPIO Pin 18
 SPICS = 25 ## (CS/SHDN) GPIO Pin 22
 
 ## Small FSR's connected to ADC
-fsr_adc_red = 0; ## Red on Channel 0
+fsr_adc_red = 1; ## Red on Channel 1
 fsr_adc_yellow = 2; ## Yellow on Channel 2
-fsr_adc_green = 4; ## Green on Channel 4
+fsr_adc_green = 0; ## Green on Channel 0
 
 # LED GPIO numbers(BCM)
 red_led = 21; ## Red - GPIO Pin 40
@@ -88,7 +88,7 @@ block_inserted_green = False ## Green
 def red_block_in(): ## Red
         global block_inserted_red
         GPIO.output(red_led, True)
-        time.sleep(0.5)
+        time.sleep(1)
         GPIO.output(red_led, False)
         block_inserted_red = False
         return block_inserted_red
@@ -96,7 +96,7 @@ def red_block_in(): ## Red
 def yellow_block_in(): ## Yellow
         global block_inserted_yellow
         GPIO.output(yellow_led, True)
-        time.sleep(0.5)
+        time.sleep(1)
         GPIO.output(yellow_led, False)
         block_inserted_yellow = False
         return block_inserted_yellow
@@ -104,7 +104,7 @@ def yellow_block_in(): ## Yellow
 def green_block_in(): ## Green
         global block_inserted_green
         GPIO.output(green_led, True)
-        time.sleep(0.5)
+        time.sleep(1)
         GPIO.output(green_led, False)
         block_inserted_green = False
         return block_inserted_green
