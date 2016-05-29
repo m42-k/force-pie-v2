@@ -64,7 +64,7 @@ fsr_adc_green = 4; ## Green on Channel 4
 # LED GPIO numbers(BCM)
 red_led = 21; ## Red - GPIO Pin 40
 yellow_led = 20; # Yellow - GPIO Pin 38
-green_led = 5; # Green - GPIO Pin 29
+green_led = 13; # Green - GPIO Pin 33
 
 global GPIO
 GPIO.setmode(GPIO.BCM)
@@ -84,12 +84,18 @@ GPIO.setup(SPICS, GPIO.OUT)
 # Functions that run on Force Detection
 def red_block_in(): ## Red
         GPIO.output(red_led, block_inserted_red)
+        time.sleep(0.5)
+        GPIO.output(red_led, False)
         
 def yellow_block_in(): ## Yellow
         GPIO.output(yellow_led, block_inserted_yellow)
+        time.sleep(0.5)
+        GPIO.output(yellow_led, False)
         
 def green_block_in(): ## Green
         GPIO.output(green_led, block_inserted_green)
+        time.sleep(0.5)
+        GPIO.output(green_led, False)
 
 ## Keep track of the last FSR value
 last_fsr_read_red = 0 ## Red 
