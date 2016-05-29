@@ -79,6 +79,11 @@ GPIO.setup(SPIMISO, GPIO.IN)
 GPIO.setup(SPICLK, GPIO.OUT)
 GPIO.setup(SPICS, GPIO.OUT)
 
+## we'll assume that the blocks haven't been inserted yet
+block_inserted_red = False ## Red
+block_inserted_yellow = False ## Yellow
+block_inserted_green = False ## Green
+
 # Functions that run on Force Detection
 def red_block_in(): ## Red
         global block_inserted_red
@@ -115,6 +120,9 @@ tolerance = 5       # to keep from being jittery we'll only do an action
                     
 while True:
         ## we'll assume that the blocks haven't been inserted yet
+        global block_inserted_red
+        global block_inserted_yellow
+        global block_inserted_green
         block_inserted_red = False ## Red
         block_inserted_yellow = False ## Yellow
         block_inserted_green = False ## Green
@@ -179,7 +187,7 @@ while True:
                         #print "trim_pot_changed", set_volume
                         
                 ## Save the FSR reading for the next loop
-                last_fsr_read_red = fsr_adjust_red
+                last_fsr_read_red = fsr_signal_red
                 
         ## YELLOW
         if block_inserted_yellow is True:
@@ -197,7 +205,7 @@ while True:
                         #print "trim_pot_changed_yellow", set_volume_yellow
                         
                 ## Save the FSR reading for the next loop
-                last_fsr_read_yellow = fsr_adjust_yellow
+                last_fsr_read_yellow = fsr_signal_yellow
                 
         ## GREEN
         if block_inserted_green is True:
@@ -215,7 +223,7 @@ while True:
                         #print "trim_pot_changed_green", set_volume_green
                         
                 ## Save the FSR reading for the next loop
-                last_fsr_read_green = fsr_adjust_green
+                last_fsr_read_green = fsr_signal_green
 
         ## Hang out and do nothing for a half second
         time.sleep(0.5)
