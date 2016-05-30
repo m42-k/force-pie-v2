@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 
 ## Base code written by Limor "Ladyada" Fried for Adafruit Industries, (c) 2015
-## This code is released into the public domain 
-## HEAVILY MODIFIED BY m42-k!
+## This code is released into the public domain
+
+## Overhauled for a different use BY m42-k!
 ## Raspberry Pi Model B+
 
 import time
@@ -57,14 +58,14 @@ SPIMOSI = 24 ## GPIO Pin 18
 SPICS = 25 ## (CS/SHDN) GPIO Pin 22
 
 ## LED GPIO numbers(BCM)
-red_led = 21; ## Red - GPIO Pin 40
-yellow_led = 20; # Yellow - GPIO Pin 38
-green_led = 13; # Green - GPIO Pin 33
+red_led = 21 ## Red - GPIO Pin 40
+yellow_led = 20 # Yellow - GPIO Pin 38
+green_led = 13 # Green - GPIO Pin 33
 
 ## Small FSR's connected to ADC
-fsr_adc_red = 1; ## Red on Channel 1
-fsr_adc_yellow = 2; ## Yellow on Channel 2
-fsr_adc_green = 0; ## Green on Channel 0
+fsr_adc_red = 1 ## Red on Channel 1
+fsr_adc_yellow = 2 ## Yellow on Channel 2
+fsr_adc_green = 0 ## Green on Channel 0
 
 ## Set up LED GPIO pins
 GPIO.setup(red_led, GPIO.OUT) ## Red
@@ -85,15 +86,15 @@ block_inserted_green = False ## Green
 # Functions that run on Force Detection
 def red_block_in(): ## Red
         GPIO.output(red_led, True)
-        return block_inserted_red
+        return block_inserted_red ## Test with this removed.
         
 def yellow_block_in(): ## Yellow
         GPIO.output(yellow_led, True)
-        return block_inserted_yellow
+        return block_inserted_yellow ## Test with this removed.
         
 def green_block_in(): ## Green
         GPIO.output(green_led, True)
-        return block_inserted_green
+        return block_inserted_green ## Test with this removed.
 
 ## Keep track of the last FSR value
 last_fsr_read_red = 0 ## Red 
