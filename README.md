@@ -6,9 +6,9 @@ Code written in Python
 Hardware
 - Raspberry Pi B+
 - Analogue Digital Converter
-- 3 Coloured LEDs
+- 3 LEDS (Red, Yellow & Green)
 - 3 Force Sensitive Resistors
-- 6 Resistors
+- 6 Resistors (3 for LEDs, 3 for Force Sensitive Resistors)
 - 1 Breadboard
 - Wires
 
