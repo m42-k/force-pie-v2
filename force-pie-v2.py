@@ -87,15 +87,12 @@ block_inserted_green = False ## Green
 # Functions that run on Force Detection
 def red_block_in(): ## Red
         GPIO.output(red_led, True)
-        #return block_inserted_red ## Test with this removed.
         
 def yellow_block_in(): ## Yellow
         GPIO.output(yellow_led, True)
-        #return block_inserted_yellow ## Test with this removed.
         
 def green_block_in(): ## Green
         GPIO.output(green_led, True)
-        #return block_inserted_green ## Test with this removed.
 
 ## Keep track of the last FSR value
 last_fsr_read_red = 0 ## Red 
@@ -162,8 +159,8 @@ while True:
                 red_block_in()
                 ## Save the FSR reading for the next loop
                 last_fsr_read_red = fsr_signal_red
-                time.sleep(0.5)
-                GPIO.output(red_led, False)
+                #time.sleep(0.5)
+                #GPIO.output(red_led, False)
         else:
                 last_fsr_read_red = fsr_signal_red
                 
@@ -172,8 +169,8 @@ while True:
                 yellow_block_in()
                 ## Save the FSR reading for the next loop
                 last_fsr_read_yellow = fsr_signal_yellow
-                time.sleep(0.5)
-                GPIO.output(yellow_led, False)
+                #time.sleep(0.5)
+                #GPIO.output(yellow_led, False)
         else:
                 last_fsr_read_yellow = fsr_signal_yellow
                 
@@ -182,8 +179,8 @@ while True:
                 green_block_in()
                 ## Save the FSR reading for the next loop
                 last_fsr_read_green = fsr_signal_green
-                time.sleep(0.5)
-                GPIO.output(green_led, False)
+                #time.sleep(0.5)
+                #GPIO.output(green_led, False)
         else:
                 last_fsr_read_green = fsr_signal_green
 
@@ -191,6 +188,6 @@ while True:
         time.sleep(0.3) 
         
         ## Turn LED's Off
-        #GPIO.output(red_led, False)
-        #GPIO.output(yellow_led, False)
-        #GPIO.output(green_led, False)
+        GPIO.output(red_led, False)
+        GPIO.output(yellow_led, False)
+        GPIO.output(green_led, False)
