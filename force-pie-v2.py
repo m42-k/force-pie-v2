@@ -103,7 +103,9 @@ last_fsr_read_yellow = 0 ## Yellow
 last_fsr_read_green = 0 ## Green
 
 ## Add a tolerance for FSR sensitivity
-tolerance = 5
+red_tolerance = 100 ## Red
+yellow_tolerance = 100 ## Yellow
+green_tolerance = 100 ## Green
                     
 while True:
         ## We'll assume that the blocks haven't been inserted yet
@@ -124,30 +126,30 @@ while True:
         if DEBUG:
                 ## Red
                 print "fsr_signal_red:", fsr_signal_red
-                print "fsr_adjust_yellow:", fsr_adjust_yellow
-                print "last_fsr_read_red", last_fsr_read_red
+                print "fsr_adjust_red:", fsr_adjust_red
+                print "last_fsr_read_red:", last_fsr_read_red
                 ## Yellow
                 print "fsr_signal_yellow:", fsr_signal_yellow
                 print "fsr_adjust_yellow:", fsr_adjust_yellow
-                print "last_fsr_read_yellow", last_fsr_read_yellow
+                print "last_fsr_read_yellow:", last_fsr_read_yellow
                 ## Green
                 print "fsr_signal_green:", fsr_signal_green
                 print "fsr_adjust_green:", fsr_adjust_green
-                print "last_fsr_read_green", last_fsr_read_green
+                print "last_fsr_read_green:", last_fsr_read_green
         ## Red
-        if fsr_adjust_red > tolerance:
+        if fsr_adjust_red > red_tolerance:
                block_inserted_red = True
         ## Yellow
-        if fsr_adjust_yellow > tolerance:
+        if fsr_adjust_yellow > yellow_tolerance:
                block_inserted_yellow = True
         ## Green
-        if fsr_adjust_green > tolerance: 
+        if fsr_adjust_green > green_tolerance: 
                block_inserted_green = True
                
         if DEBUG:
-                print "block_inserted_red", block_inserted_red ## Red
-                print "block_inserted_yellow", block_inserted_yellow ## Yellow
-                print "block_inserted_green", block_inserted_green ## Green
+                print "block_inserted_red:", block_inserted_red ## Red
+                print "block_inserted_yellow:", block_inserted_yellow ## Yellow
+                print "block_inserted_green:", block_inserted_green ## Green
         
         ## RED
         if block_inserted_red is True:
