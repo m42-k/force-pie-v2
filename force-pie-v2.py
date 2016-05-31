@@ -104,8 +104,8 @@ last_fsr_read_green = 0 ## Green
 
 ## Add a tolerance for FSR sensitivity
 red_tolerance = 100 ## Red
-yellow_tolerance = 90 ## Yellow
-green_tolerance = 90 ## Green
+yellow_tolerance = 80 ## Yellow
+green_tolerance = 80 ## Green
                     
 while True:
         ## We'll assume that the blocks haven't been inserted yet
@@ -119,9 +119,13 @@ while True:
         fsr_signal_green = readadc(fsr_adc_green, SPICLK, SPIMOSI, SPIMISO, SPICS) ## Green
         
         ## How much has the FSR reading changed since the last read?
-        fsr_adjust_red = abs(fsr_signal_red - last_fsr_read_red) ## Red
-        fsr_adjust_yellow = abs(fsr_signal_yellow - last_fsr_read_yellow) ## Yellow
-        fsr_adjust_green = abs(fsr_signal_green - last_fsr_read_green) ## Green
+        fsr_adjust_red = fsr_signal_red - last_fsr_read_red ## Red
+        fsr_adjust_yellow = fsr_signal_yellow - last_fsr_read_yellow ## Yellow
+        fsr_adjust_green = fsr_signal_green - last_fsr_read_green ## Green
+        
+        #fsr_adjust_red = abs(fsr_signal_red - last_fsr_read_red) ## Red
+        #fsr_adjust_yellow = abs(fsr_signal_yellow - last_fsr_read_yellow) ## Yellow
+        #fsr_adjust_green = abs(fsr_signal_green - last_fsr_read_green) ## Green
         
         if DEBUG:
                 ## Red
@@ -140,10 +144,7 @@ while True:
         ## Conditions that determine if the block has been inserted
         ## Red
         if fsr_adjust_red > red_tolerance:
-                if fsr_signal_red < last_fsr_read_red:
-                        block_inserted_red = False
-                else:
-                        block_inserted_red = True
+                block_inserted_red = True
         ## Yellow
         if fsr_adjust_yellow > yellow_tolerance:
                block_inserted_yellow = True
