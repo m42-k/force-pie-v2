@@ -15,7 +15,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False) 
 
 ## Change to 1 to enable debug prints
-DEBUG = 0
+DEBUG = 1
 
 ## read SPI data from MCP3008 chip, 8 possible adc's (0 thru 7)
 def readadc(adcnum, clockpin, mosipin, misopin, cspin): 
@@ -87,15 +87,15 @@ block_inserted_green = False ## Green
 # Functions that run on Force Detection
 def red_block_in(): ## Red
         GPIO.output(red_led, True)
-        return block_inserted_red ## Test with this removed.
+        #return block_inserted_red ## Test with this removed.
         
 def yellow_block_in(): ## Yellow
         GPIO.output(yellow_led, True)
-        return block_inserted_yellow ## Test with this removed.
+        #return block_inserted_yellow ## Test with this removed.
         
 def green_block_in(): ## Green
         GPIO.output(green_led, True)
-        return block_inserted_green ## Test with this removed.
+        #return block_inserted_green ## Test with this removed.
 
 ## Keep track of the last FSR value
 last_fsr_read_red = 0 ## Red 
