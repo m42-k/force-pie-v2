@@ -141,7 +141,7 @@ while True:
                 if fsr_signal_red < last_fsr_read_red:
                         block_inserted_red = False
                 else:
-                block_inserted_red = True
+                        block_inserted_red = True
         ## Yellow
         if fsr_adjust_yellow > yellow_tolerance:
                block_inserted_yellow = True
