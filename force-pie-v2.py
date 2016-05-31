@@ -157,30 +157,27 @@ while True:
         ## RED
         if block_inserted_red is True:
                 red_block_in()
+                
                 ## Save the FSR reading for the next loop
                 last_fsr_read_red = fsr_signal_red
-                #time.sleep(0.5)
-                #GPIO.output(red_led, False)
         else:
                 last_fsr_read_red = fsr_signal_red
                 
         ## YELLOW
         if block_inserted_yellow is True:
                 yellow_block_in()
+                
                 ## Save the FSR reading for the next loop
                 last_fsr_read_yellow = fsr_signal_yellow
-                #time.sleep(0.5)
-                #GPIO.output(yellow_led, False)
         else:
                 last_fsr_read_yellow = fsr_signal_yellow
                 
         ## GREEN
         if block_inserted_green is True:
                 green_block_in()
+                
                 ## Save the FSR reading for the next loop
                 last_fsr_read_green = fsr_signal_green
-                #time.sleep(0.5)
-                #GPIO.output(green_led, False)
         else:
                 last_fsr_read_green = fsr_signal_green
 
