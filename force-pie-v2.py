@@ -136,6 +136,8 @@ while True:
                 print "fsr_signal_green:", fsr_signal_green
                 print "fsr_adjust_green:", fsr_adjust_green
                 print "last_fsr_read_green:", last_fsr_read_green
+                
+        ## Conditions that determine if the block has been inserted
         ## Red
         if fsr_adjust_red > red_tolerance:
                 if fsr_signal_red < last_fsr_read_red:
@@ -157,21 +159,18 @@ while True:
         ## RED
         if block_inserted_red is True:
                 red_block_in()
-                
                 ## Save the FSR reading for the next loop
                 last_fsr_read_red = fsr_signal_red
                 
         ## YELLOW
         if block_inserted_yellow is True:
-                yellow_block_in() 
-
+                yellow_block_in()
                 ## Save the FSR reading for the next loop
                 last_fsr_read_yellow = fsr_signal_yellow
                 
         ## GREEN
         if block_inserted_green is True:
                 green_block_in()
-                
                 ## Save the FSR reading for the next loop
                 last_fsr_read_green = fsr_signal_green
 
