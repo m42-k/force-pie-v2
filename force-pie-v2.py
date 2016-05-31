@@ -188,7 +188,7 @@ while True:
                 last_fsr_read_green = fsr_signal_green
 
         ## Hang out and do nothing for a half second
-        time.sleep(0.1) 
+        #time.sleep(0.1) 
         
         ## Turn LED's Off
         #GPIO.output(red_led, False)
