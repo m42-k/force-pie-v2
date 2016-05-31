@@ -104,8 +104,8 @@ last_fsr_read_green = 0 ## Green
 
 ## Add a tolerance for FSR sensitivity
 red_tolerance = 100 ## Red
-yellow_tolerance = 100 ## Yellow
-green_tolerance = 100 ## Green
+yellow_tolerance = 90 ## Yellow
+green_tolerance = 90 ## Green
                     
 while True:
         ## We'll assume that the blocks haven't been inserted yet
@@ -173,7 +173,7 @@ while True:
                 last_fsr_read_green = fsr_signal_green
 
         ## Hang out and do nothing for a half second
-        time.sleep(0.3) 
+        time.sleep(0.5) 
         
         ## Turn LED's Off
         GPIO.output(red_led, False)
