@@ -98,17 +98,7 @@ p.yellow_counter {
 </div> <!--- End of boximagecontainer -->
 <div id="counterscontainer">
 <p class="green_counter">
-1
-</p>
-<p class="red_counter">
-2
-</p>
-<p class="yellow_counter">
-3
-</p>
-<p>
 <?php
-	   
 $dbhandle = sqlite_open('../toy_box.db', 0666, $error);
 
 if (!$dbhandle) die ($error);
@@ -121,8 +111,13 @@ print_r($result);
 print_r($query);
 
 sqlite_close($dbhandle);
-
 ?>
+</p>
+<p class="red_counter">
+2
+</p>
+<p class="yellow_counter">
+3
 </p>
 </div> <!--- End of counterscontainer -->
 </div> <!--- End of container -->
