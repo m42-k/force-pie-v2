@@ -113,16 +113,18 @@ def database_counter(colour):
                                 #VALUES('"" +str(items+1)+ ""','"" +str(database_top_ten_data[items])+ ""')'
         
         ## Database Query to update counter
-        add_to_database_sql = "UPDATE blocks\
-        SET block_count = block_count + 1\
-        WHERE block_colour = "str(colour)""
+        #add_to_database_sql = "UPDATE blocks\
+        #SET block_count = block_count + 1\
+        #WHERE block_colour = (%s)", (colour)
         
         print "\nEntire database contents:\n"
         for row in toy_box_db.execute("SELECT * FROM blocks"):
                 print row
         
         ## Execute Database Query
-        toy_box_db.execute(add_to_database_sql)
+        toy_box_db.execute("UPDATE blocks\
+        SET block_count = block_count + 1\
+        WHERE block_colour = (%s)", (colour))
         
         ## Commit database changes
         connection.commit()
