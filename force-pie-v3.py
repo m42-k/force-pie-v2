@@ -21,6 +21,9 @@ GPIO.setwarnings(False)
 ## Change to 1 to enable debug prints
 DEBUG = 0
 
+## Print a message so the users knows its running
+print "The Toy has been started"
+
 ## read SPI data from MCP3008 chip, 8 possible adc's (0 thru 7)
 def readadc(adcnum, clockpin, mosipin, misopin, cspin): 
         if ((adcnum > 7) or (adcnum < 0)):
