@@ -115,7 +115,7 @@ def database_counter(colour):
         ## Database Query to update counter
         add_to_database_sql = "UPDATE blocks\
         SET block_count = block_count + 1\
-        WHERE block_colour = '"+str(colour)+"'"
+        WHERE block_colour = '"+colour+"'"
         
         print "\nEntire database contents:\n"
         for row in toy_box_db.execute("SELECT * FROM blocks"):
@@ -194,7 +194,7 @@ while True:
         ## RED
         if block_inserted_red is True:
                 red_block_in() ## Turn on Red LED
-                database_counter("red") # Add 1 to Red database counter
+                database_counter("Red") # Add 1 to Red database counter
                 
                 ## Save the FSR reading for the next loop
                 last_fsr_read_red = fsr_signal_red
@@ -204,7 +204,7 @@ while True:
         ## YELLOW
         if block_inserted_yellow is True:
                 yellow_block_in() # Turn on Yellow LED
-                database_counter("yellow") # Add 1 to Yellow database counter
+                database_counter("Yellow") # Add 1 to Yellow database counter
                 
                 ## Save the FSR reading for the next loop
                 last_fsr_read_yellow = fsr_signal_yellow
@@ -214,7 +214,7 @@ while True:
         ## GREEN
         if block_inserted_green is True:
                 green_block_in() ## Turn on Green LED
-                database_counter("green") # Add 1 to Green database counter
+                database_counter("Green") # Add 1 to Green database counter
                 
                 ## Save the FSR reading for the next loop
                 last_fsr_read_green = fsr_signal_green
