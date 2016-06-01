@@ -103,7 +103,7 @@ ini_set('display_errors', 'On');
 error_reporting(E_ALL|E_STRICT);
 
 $db = new SQLite3('/home/pi/kids-toy/toy_box.db');
-$result = ($db->query('SELECT block_num FROM blocks WHERE block_colour = "Green";'));
+$result = ($db->query('SELECT block_count FROM blocks WHERE block_colour = "Green";'));
 while ($res = $result->fetchArray(SQLITE3_ASSOC)){
         #var_dump($res);
         print ("<strong>" . $res["block_num"] ." thermostat,</strong><br />");
@@ -112,10 +112,26 @@ $db->close();
 ?>
 </p>
 <p class="red_counter">
-2
+	<?php
+$db = new SQLite3('/home/pi/kids-toy/toy_box.db');
+$result = ($db->query('SELECT block_count FROM blocks WHERE block_colour = "Red";'));
+while ($res = $result->fetchArray(SQLITE3_ASSOC)){
+        #var_dump($res);
+        print ("<strong>" . $res["block_num"] ." thermostat,</strong><br />");
+}
+$db->close();
+?>
 </p>
 <p class="yellow_counter">
-3
+	<?php
+$db = new SQLite3('/home/pi/kids-toy/toy_box.db');
+$result = ($db->query('SELECT block_count FROM blocks WHERE block_colour = "Yellow";'));
+while ($res = $result->fetchArray(SQLITE3_ASSOC)){
+        #var_dump($res);
+        print ("<strong>" . $res["block_num"] ." thermostat,</strong><br />");
+}
+$db->close();
+?>
 </p>
 </div> <!--- End of counterscontainer -->
 </div> <!--- End of container -->
