@@ -105,7 +105,7 @@ error_reporting(E_ALL|E_STRICT);
 
 # This is the database open call, it returns a
 # database object that has to be use going forward
-$db = new SQLite3('/home/pi/toy_box');
+$db = new SQLite3('../toy_box');
 
 # you do a query statment that return a strange
 # SQLite3Result object that you have to use
