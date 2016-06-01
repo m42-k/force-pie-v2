@@ -6,18 +6,18 @@
 ## Overhauled for a different use BY m42-k!
 ## Raspberry Pi Model B+ 
 
+## Import mrequired modules
 import time
 import os
 import RPi.GPIO as GPIO
 import sqlite3
-#from subprocess import call
 from random import randint
 
 global GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False) 
 
-## Change to 1 to enable debug prints
+## Change to 1 to enable debug mode
 DEBUG = 0
 
 ## Print a message and play a sound so the users knows its running
@@ -131,9 +131,10 @@ def database_counter(colour):
         SET block_count = block_count + 1\
         WHERE block_colour = '"+colour+"'"
         
-        #print "\nEntire database contents:\n"
-        #for row in toy_box_db.execute("SELECT * FROM blocks"):
-                #print row
+        if DEBUG:
+                print "\nEntire database contents:\n"
+                for row in toy_box_db.execute("SELECT * FROM blocks"):
+                        print row
         
         ## Execute Database Query
         toy_box_db.execute(add_to_database_sql)
