@@ -12,10 +12,13 @@ Hardware
 - 1 Breadboard
 - Wires
 
-v2.1 - Future Release
+v3.0 - Future Release
 - Sound Functionality
 - MySQL Database Connections
 - Website Connections
+- 
+v2.1
+- SQLite database storing number of times the block is inserted
 
 v2.0
 - Added 2 more Force Sensitive Resistor and 2 more LEDs (Yellow & Green)
