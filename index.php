@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
 <meta name="description" content="Golfstarz Toy Box">
 <meta name="keywords" content="Golfstarz, Toy, Box">
-<meta name="author" content="Michael King (n669841) & Pawan Deo (n9739033)">
+<meta name="author" content="Michael King (n9669841) & Pawan Deo (n9739033)">
 <title>Toy Box Counter</title>
  
 <style>
