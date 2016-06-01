@@ -92,7 +92,7 @@ block_inserted_yellow = False ## Yellow
 block_inserted_green = False ## Green
 
 ## Sound File Names
-sound_files = ["its-fun-to-count-2.mp3", "one-two-three-2.mp3", "one-two-three-four-five-2.mp3", "one-two-three-its-fun-to-count-2.mp3]
+sound_files = ["its-fun-to-count-2.mp3", "one-two-three-2.mp3", "one-two-three-four-five-2.mp3", "one-two-three-its-fun-to-count-2.mp3"]
 
 def play_audio():
         random_sound_file = randint(0,3)
