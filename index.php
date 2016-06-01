@@ -130,7 +130,7 @@ $db->close(); # I opened it, I should close it
 ?>
 	<?php
 	phpinfo();
-	?>
+	?> 
 <?php
 $db = new SQLite('../toy_box.db');
 
