@@ -106,7 +106,7 @@ $db = new SQLite3('/home/pi/kids-toy/toy_box.db');
 $result = ($db->query('SELECT block_count FROM blocks WHERE block_colour = "Green";'));
 while ($res = $result->fetchArray(SQLITE3_ASSOC)){
         #var_dump($res);
-        print ("<strong>" . $res["block_count"] ." thermostat,</strong><br />");
+        print ("<strong>" . $res["block_count"] ."</strong><br />");
 }
 $db->close();
 ?>
@@ -117,7 +117,7 @@ $db = new SQLite3('/home/pi/kids-toy/toy_box.db');
 $result = ($db->query('SELECT block_count FROM blocks WHERE block_colour = "Red";'));
 while ($res = $result->fetchArray(SQLITE3_ASSOC)){
         #var_dump($res);
-        print ("<strong>" . $res["block_count"] ." thermostat,</strong><br />");
+        print ("<strong>" . $res["block_count"] ."</strong><br />");
 }
 $db->close();
 ?>
@@ -128,7 +128,7 @@ $db = new SQLite3('/home/pi/kids-toy/toy_box.db');
 $result = ($db->query('SELECT block_count FROM blocks WHERE block_colour = "Yellow";'));
 while ($res = $result->fetchArray(SQLITE3_ASSOC)){
         #var_dump($res);
-        print ("<strong>" . $res["block_count"] ." ,</strong><br />");
+        print ("" . $res["block_count"] ."");
 }
 $db->close();
 ?>
