@@ -107,22 +107,22 @@ p.yellow_counter {
 3
 </p>
 <p>
-	<?php
+<?php
 	   
-	$dbhandle = sqlite_open('../toy_box.db', 0666, $error);
+$dbhandle = sqlite_open('../toy_box.db', 0666, $error);
 
-	if (!$dbhandle) die ($error);
+if (!$dbhandle) die ($error);
 	    
-	$query = 'SELECT block_count FROM blocks WHERE block_colour = "Red"';
-	$result = sqlite_query($dbhandle, $query);
-	if (!$result) die("Cannot execute query.");
+$query = 'SELECT block_count FROM blocks';
+$result = sqlite_query($dbhandle, $query);
+if (!$result) die("Cannot execute query.");
 
-	print_r($result);
-	print_r($query);
+print_r($result);
+print_r($query);
 
-	sqlite_close($dbhandle);
+sqlite_close($dbhandle);
 
-	?>
+?>
 </p>
 </div> <!--- End of counterscontainer -->
 </div> <!--- End of container -->
