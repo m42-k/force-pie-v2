@@ -113,9 +113,9 @@ def database_counter(colour):
                                 #VALUES('"" +str(items+1)+ ""','"" +str(database_top_ten_data[items])+ ""')'
         
         ## Database Query to update counter
-        add_to_database_sql = 'UPDATE blocks\
+        add_to_database_sql = "UPDATE blocks\
         SET block_count = block_count + 1\
-        WHERE colour = block_colour'
+        WHERE block_colour = "''str(colour)''""
         
         print "\nEntire database contents:\n"
         for row in toy_box_db.execute("SELECT * FROM blocks"):
