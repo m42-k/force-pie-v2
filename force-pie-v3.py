@@ -191,7 +191,7 @@ while True:
         ## RED
         if block_inserted_red is True:
                 red_block_in() ## Turn on Red LED
-                database_counter(red) # Add 1 to Red database counter
+                database_counter("red") # Add 1 to Red database counter
                 
                 ## Save the FSR reading for the next loop
                 last_fsr_read_red = fsr_signal_red
@@ -201,7 +201,7 @@ while True:
         ## YELLOW
         if block_inserted_yellow is True:
                 yellow_block_in() # Turn on Yellow LED
-                database_counter(yellow) # Add 1 to Yellow database counter
+                database_counter("yellow") # Add 1 to Yellow database counter
                 
                 ## Save the FSR reading for the next loop
                 last_fsr_read_yellow = fsr_signal_yellow
@@ -211,7 +211,7 @@ while True:
         ## GREEN
         if block_inserted_green is True:
                 green_block_in() ## Turn on Green LED
-                database_counter(green) # Add 1 to Green database counter
+                database_counter("green") # Add 1 to Green database counter
                 
                 ## Save the FSR reading for the next loop
                 last_fsr_read_green = fsr_signal_green
