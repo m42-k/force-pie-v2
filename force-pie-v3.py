@@ -161,10 +161,6 @@ while True:
         fsr_adjust_yellow = fsr_signal_yellow - last_fsr_read_yellow ## Yellow
         fsr_adjust_green = fsr_signal_green - last_fsr_read_green ## Green
         
-        #fsr_adjust_red = abs(fsr_signal_red - last_fsr_read_red) ## Red
-        #fsr_adjust_yellow = abs(fsr_signal_yellow - last_fsr_read_yellow) ## Yellow
-        #fsr_adjust_green = abs(fsr_signal_green - last_fsr_read_green) ## Green
-        
         if DEBUG:
                 ## Red
                 print "fsr_signal_red:", fsr_signal_red
