@@ -115,7 +115,7 @@ def database_counter(colour):
         ## Database Query to update counter
         add_to_database_sql = "UPDATE blocks\
         SET block_count = block_count + 1\
-        WHERE block_colour = '"+colour+"'"
+        WHERE block_colour = '"+str(colour)+"'"
         
         print "\nEntire database contents:\n"
         for row in toy_box_db.execute("SELECT * FROM blocks"):
