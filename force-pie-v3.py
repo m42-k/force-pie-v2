@@ -10,9 +10,8 @@ import time
 #import os
 import RPi.GPIO as GPIO
 import sqlite3
-
 from subprocess import call
-#call(["ls"])
+from random import randint
 
 global GPIO
 GPIO.setmode(GPIO.BCM)
@@ -21,8 +20,9 @@ GPIO.setwarnings(False)
 ## Change to 1 to enable debug prints
 DEBUG = 0
 
-## Print a message so the users knows its running
-print "The Toy has been started"
+## Print a message and play a sound so the users knows its running
+print "The Toy has been started!"
+call(["mpg123 kids-toy-box-2.mp3"])
 
 ## read SPI data from MCP3008 chip, 8 possible adc's (0 thru 7)
 def readadc(adcnum, clockpin, mosipin, misopin, cspin): 
@@ -90,6 +90,13 @@ GPIO.setup(SPICS, GPIO.OUT)
 block_inserted_red = False ## Red
 block_inserted_yellow = False ## Yellow
 block_inserted_green = False ## Green
+
+## Sound File Names
+sound_files = ["its-fun-to-count-2.mp3", "one-two-three-2.mp3", "one-two-three-four-five-2.mp3", "one-two-three-its-fun-to-count-2.mp3]
+
+def play_audio():
+        random_sound_file = randint(0,3)
+        call(["mpg123",sound_files[random_sound_file])
 
 # Functions that run on Force Detection
 def red_block_in(): ## Red
@@ -192,6 +199,7 @@ while True:
         if block_inserted_red is True:
                 red_block_in() ## Turn on Red LED
                 database_counter("Red") # Add 1 to Red database counter
+                play_audio() # Play random sound file
                 
                 ## Save the FSR reading for the next loop
                 last_fsr_read_red = fsr_signal_red
@@ -202,6 +210,7 @@ while True:
         if block_inserted_yellow is True:
                 yellow_block_in() # Turn on Yellow LED
                 database_counter("Yellow") # Add 1 to Yellow database counter
+                play_audio() # Play random sound file
                 
                 ## Save the FSR reading for the next loop
                 last_fsr_read_yellow = fsr_signal_yellow
@@ -212,6 +221,7 @@ while True:
         if block_inserted_green is True:
                 green_block_in() ## Turn on Green LED
                 database_counter("Green") # Add 1 to Green database counter
+                play_audio() # Play random sound file
                 
                 ## Save the FSR reading for the next loop
                 last_fsr_read_green = fsr_signal_green
