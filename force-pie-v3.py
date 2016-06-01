@@ -109,23 +109,23 @@ def database_counter(colour):
         except:
                 print "Sorry, unable to connect to database"
         
+        #latest_top_ten_sql = 'INSERT INTO toy_box(counter)\
+                                #VALUES('"" +str(items+1)+ ""','"" +str(database_top_ten_data[items])+ ""')'
+        
+        ## Database Query to update counter
+        add_to_database_sql = 'UPDATE blocks\
+        SET block_count = block_count + 1\
+        WHERE block_colour = colour'
+        
         print "\nEntire database contents:\n"
         for row in toy_box_db.execute("SELECT * FROM blocks"):
                 print row
         
-        #latest_top_ten_sql = 'INSERT INTO toy_box(counter)\
-                                #VALUES('"" +str(items+1)+ ""','"" +str(database_top_ten_data[items])+ ""')'
-        
-        ## Database Query
-        #add_to_database_sql = 'UPDATE toy_box\
-        #SET counter = counter + 1\
-        #WHERE block_colour = colour'
-        
         ## Execute Database Query
-        #box_count_db.execute(add_to_database_sql)
+        toy_box_db.execute(add_to_database_sql)
         
         ## Commit database changes
-        #connection.commit()
+        connection.commit()
         
         ## Close databse connection
         toy_box_db.close()
