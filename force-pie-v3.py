@@ -96,7 +96,7 @@ sound_files = ["its-fun-to-count-2.mp3", "one-two-three-2.mp3", "one-two-three-f
 
 def play_audio():
         random_sound_file = randint(0,3)
-        call(["mpg123",""sound_files[random_sound_file]")
+        call(["mpg123, sound_files[random_sound_file]")
 
 # Functions that run on Force Detection
 def red_block_in(): ## Red
