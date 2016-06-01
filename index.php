@@ -97,6 +97,9 @@ p.yellow_counter {
 </div> <!--- End of boximagecontainer -->
 <div id="counterscontainer">
 <p class="green_counter">
+	<?php
+	phpinfo();
+	?>
 <?php
 $db = new SQLite('../toy_box.db');
 
