@@ -22,7 +22,7 @@ DEBUG = 0
 
 ## Print a message and play a sound so the users knows its running
 print "The Toy has been started!"
-call(["mpg123 kids-toy-box-2.mp3"])
+call(["mpg123 /home/pi/kids-toy/kids-toy-box-2.mp3"])
 
 ## read SPI data from MCP3008 chip, 8 possible adc's (0 thru 7)
 def readadc(adcnum, clockpin, mosipin, misopin, cspin): 
@@ -92,7 +92,10 @@ block_inserted_yellow = False ## Yellow
 block_inserted_green = False ## Green
 
 ## Sound File Names
-sound_files = ["its-fun-to-count-2.mp3", "one-two-three-2.mp3", "one-two-three-four-five-2.mp3", "one-two-three-its-fun-to-count-2.mp3"]
+sound_files = ["/home/pi/kids-toy/its-fun-to-count-2.mp3",
+"/home/pi/kids-toy/one-two-three-2.mp3",
+"/home/pi/kids-toy/one-two-three-four-five-2.mp3",
+"/home/pi/kids-toy/one-two-three-its-fun-to-count-2.mp3"]
 
 def play_audio():
         random_sound_file = randint(0,3)
