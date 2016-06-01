@@ -107,7 +107,7 @@ def database_counter(colour):
                 print "Sorry, unable to connect to database"
         
         print "\nEntire database contents:\n"
-        for row in box_count_db.execute("SELECT * FROM blocks"):
+        for row in toy_box_db.execute("SELECT * FROM blocks"):
                 print row
         
         #latest_top_ten_sql = 'INSERT INTO toy_box(counter)\
@@ -125,7 +125,7 @@ def database_counter(colour):
         #connection.commit()
         
         ## Close databse connection
-        box_count_db.close()
+        toy_box_db.close()
         connection.close()
 
 ## Keep track of the last FSR value
