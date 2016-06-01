@@ -104,14 +104,11 @@ def green_block_in(): ## Green
 ## Update Databse Functions
 def database_counter(colour):
         try:
-                connection = sqlite3.connect('../toy_box.db')
+                connection = sqlite3.connect('../kids-toy/toy_box.db')
                 toy_box_db = connection.cursor()
         except:
                 print "Sorry, unable to connect to database"
-        
-        #latest_top_ten_sql = 'INSERT INTO toy_box(counter)\
-                                #VALUES('"" +str(items+1)+ ""','"" +str(database_top_ten_data[items])+ ""')'
-        
+                
         ## Database Query to update counter
         add_to_database_sql = "UPDATE blocks\
         SET block_count = block_count + 1\
