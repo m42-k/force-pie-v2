@@ -99,7 +99,7 @@ sound_files = ["/home/pi/kids-toy/its-fun-to-count-2.mp3",
 
 def play_audio():
         random_sound_file = randint(0,3)
-        os.system('mpg123 -q 'sound_files[random_sound_file]' &')
+        os.system('mpg123 -q sound_files[random_sound_file] &')
 
 # Functions that run on Force Detection
 def red_block_in(): ## Red
