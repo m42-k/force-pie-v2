@@ -103,7 +103,7 @@ ini_set('display_errors', 'On');
 error_reporting(E_ALL|E_STRICT);
 
 # Open DB
-$db = new SQLite3('../toy_box');
+$db = new SQLite3('../toy_box.db');
 
 # you do a query statment that return a strange
 # SQLite3Result object that you have to use
