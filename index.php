@@ -106,7 +106,7 @@ $db = new SQLite3('/home/pi/kids-toy/toy_box.db');
 $result = ($db->query('SELECT block_num FROM blocks WHERE block_colour = "Green";'));
 while ($res = $result->fetchArray(SQLITE3_ASSOC)){
         #var_dump($res);
-        print (. $res["block_num"] .);
+        print ($res["block_num"]);
 }
 $db->close();
 ?>
