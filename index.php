@@ -98,13 +98,11 @@ p.yellow_counter {
 <div id="counterscontainer">
 <p class="green_counter">
 	<?php
-# This is about the minimal debugging
-# I could find that was easy to use
+# Debug
 ini_set('display_errors', 'On');
 error_reporting(E_ALL|E_STRICT);
 
-# This is the database open call, it returns a
-# database object that has to be use going forward
+# Open DB
 $db = new SQLite3('../toy_box');
 
 # you do a query statment that return a strange
