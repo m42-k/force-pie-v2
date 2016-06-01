@@ -9,6 +9,7 @@
 import time
 #import os
 import RPi.GPIO as GPIO
+import sqlite3
 
 from subprocess import call
 #call(["ls"])
@@ -100,24 +101,28 @@ def green_block_in(): ## Green
 ## Update Databse Functions
 def database_counter(colour):
         try:
-                connection = connect(database = 'box_count.db')
-                box_count_db = connection.cursor()
+                connection = sqlite3.connect('toy_box.db')
+                toy_box_db = connection.cursor()
         except:
                 print "Sorry, unable to connect to database"
+        
+        print "\nEntire database contents:\n"
+        for row in box_count_db.execute("SELECT * FROM blocks"):
+                print row
         
         #latest_top_ten_sql = 'INSERT INTO toy_box(counter)\
                                 #VALUES('"" +str(items+1)+ ""','"" +str(database_top_ten_data[items])+ ""')'
         
         ## Database Query
-        add_to_database_sql = 'UPDATE toy_box\
-        SET counter = counter + 1\
-        WHERE block_colour = colour'
+        #add_to_database_sql = 'UPDATE toy_box\
+        #SET counter = counter + 1\
+        #WHERE block_colour = colour'
         
         ## Execute Database Query
-        box_count_db.execute(add_to_database_sql)
+        #box_count_db.execute(add_to_database_sql)
         
         ## Commit database changes
-        connection.commit()
+        #connection.commit()
         
         ## Close databse connection
         box_count_db.close()
