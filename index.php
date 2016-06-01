@@ -98,6 +98,39 @@ p.yellow_counter {
 <div id="counterscontainer">
 <p class="green_counter">
 	<?php
+# This is about the minimal debugging
+# I could find that was easy to use
+ini_set('display_errors', 'On');
+error_reporting(E_ALL|E_STRICT);
+
+# This is the database open call, it returns a
+# database object that has to be use going forward
+$db = new SQLite3('/home/pi/toy_box');
+
+# you do a query statment that return a strange
+# SQLite3Result object that you have to use
+# in the fetch statement below
+$result = ($db->query('SELECT * FROM blocks;'));
+#print_r($result); # I wanted to see what it actually was
+
+# The fetch call will return a boolean False if it hits
+# the end, so why not use it in a while loop?
+#
+# The fetchArray() call can return an 'associated' array
+# that actually means give you back an array of ordered
+# pairs with name, value.  This is cool because it means
+# I can access the various values by name. Each call to
+# fetchArray return one row from the thermostats table
+while ($res = $result->fetchArray(SQLITE3_ASSOC)){
+        #var_dump($res);
+        print ("<strong>" . $res["block_num"] ." thermostat,</strong><br />");
+        print ("Currently: " . $res["block_colour"] . " <br \>");
+        print ("Temperature: " . $res["block_count"] . " <br \>");
+        print ("<br>");
+}
+$db->close(); # I opened it, I should close it
+?>
+	<?php
 	phpinfo();
 	?>
 <?php
