@@ -101,7 +101,7 @@ def green_block_in(): ## Green
 ## Update Databse Functions
 def database_counter(colour):
         try:
-                connection = sqlite3.connect('toy_box.db')
+                connection = sqlite3.connect('../toy_box.db')
                 toy_box_db = connection.cursor()
         except:
                 print "Sorry, unable to connect to database"
