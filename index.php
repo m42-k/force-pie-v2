@@ -98,9 +98,9 @@ p.yellow_counter {
 <div id="counterscontainer">
 <p class="green_counter">
 <?php
-$db = new SQLite3('../toy_box.db');
+$db = new SQLite3('box-count.db');
 
-$results = $db->query('SELECT * FROM blocks');
+$results = $db->query('SELECT * FROM toy_box');
 while ($row = $results->fetchArray()) {
     var_dump($row);
 }
