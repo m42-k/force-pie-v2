@@ -22,8 +22,8 @@ DEBUG = 0
 
 ## Print a message and play a sound so the users knows its running
 print "The Toy has been started!"
-subprocess.call(["sudo","mpg123 /home/pi/kids-toy/kids-toy-box-2.mp3"])
 call(["sudo","mpg123 /home/pi/kids-toy/kids-toy-box-2.mp3"])
+
 ## read SPI data from MCP3008 chip, 8 possible adc's (0 thru 7)
 def readadc(adcnum, clockpin, mosipin, misopin, cspin): 
         if ((adcnum > 7) or (adcnum < 0)):
