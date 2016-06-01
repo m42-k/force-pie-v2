@@ -99,7 +99,16 @@ sound_files = ["/home/pi/kids-toy/its-fun-to-count-2.mp3",
 
 def play_audio():
         random_sound_file = randint(0,3)
-        os.system('mpg123 -q sound_files[random_sound_file] &')
+        if random_sound_file == 0:
+                os.system('mpg123 -q /home/pi/kids-toy/its-fun-to-count-2.mp3 &')
+        if random_sound_file == 1:
+                os.system('mpg123 -q /home/pi/kids-toy/one-two-three-2.mp3 &')
+        if random_sound_file == 2:
+                os.system('mpg123 -q /home/pi/kids-toy/one-two-three-four-five-2.mp3 &')
+        if random_sound_file == 3:
+                os.system('mpg123 -q /home/pi/kids-toy/one-two-three-its-fun-to-count-2.mp3 &')
+        else:
+                print "Something went wrong"
 
 # Functions that run on Force Detection
 def red_block_in(): ## Red
