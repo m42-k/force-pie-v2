@@ -11,7 +11,7 @@ import time
 import RPi.GPIO as GPIO
 
 from subprocess import call
-call(["ls"])
+#call(["ls"])
 
 global GPIO
 GPIO.setmode(GPIO.BCM)
