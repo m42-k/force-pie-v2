@@ -96,6 +96,32 @@ def yellow_block_in(): ## Yellow
         
 def green_block_in(): ## Green
         GPIO.output(green_led, True)
+        
+## Update Databse Functions
+def database_counter(colour, add_one):
+        try:
+                connection = connect(database = 'box_count.db')
+                box_count_db = connection.cursor()
+        except:
+                print "Sorry, unable to connect to database"
+        
+        #latest_top_ten_sql = 'INSERT INTO toy_box(counter)\
+                                #VALUES('"" +str(items+1)+ ""','"" +str(database_top_ten_data[items])+ ""')'
+        
+        ## Database Query
+        add_to_database_sql = 'UPDATE toy_box\
+        SET counter = counter + 1\
+        WHERE block_colour = colour'
+        
+        ## Execute Database Query
+        box_count_db.execute(add_to_database_sql)
+        
+        ## Commit database changes
+        connection.commit()
+        
+        ## Close databse connection
+        box_count_db.close()
+        connection.close()
 
 ## Keep track of the last FSR value
 last_fsr_read_red = 0 ## Red 
@@ -159,7 +185,8 @@ while True:
         
         ## RED
         if block_inserted_red is True:
-                red_block_in()
+                red_block_in() ## Turn on Red LED
+                database_counter(red, 1): # Add 1 to Red database counter
                 
                 ## Save the FSR reading for the next loop
                 last_fsr_read_red = fsr_signal_red
@@ -168,7 +195,8 @@ while True:
                 
         ## YELLOW
         if block_inserted_yellow is True:
-                yellow_block_in()
+                yellow_block_in() # Turn on Yellow LED
+                database_counter(yellow, 1): # Add 1 to Yellow database counter
                 
                 ## Save the FSR reading for the next loop
                 last_fsr_read_yellow = fsr_signal_yellow
@@ -177,7 +205,8 @@ while True:
                 
         ## GREEN
         if block_inserted_green is True:
-                green_block_in()
+                green_block_in() ## Turn on Green LED
+                database_counter(green, 1): # Add 1 to Green database counter
                 
                 ## Save the FSR reading for the next loop
                 last_fsr_read_green = fsr_signal_green
