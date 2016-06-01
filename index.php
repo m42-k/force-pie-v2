@@ -98,17 +98,24 @@ p.yellow_counter {
 </div> <!--- End of boximagecontainer -->
 <div id="counterscontainer">
 <p class="green_counter">
-	<?php
-	$db = new SQLite3('../toy_box.db') or die('Unable to open database');
+<?php
+/**
+ * Simple example of extending the SQLite3 class and changing the __construct
+ * parameters, then using the open method to initialize the DB.
+ */
+ class MyDB extends SQLite3
+{
+    function __construct()
+    {
+        $this->open('../toy_box.db');
+    }
+}
 
-	$results = $db->query('SELECT block_count FROM blocks');
-	while ($row = $results->fetchArray()) {
-    	var_dump($row);
-	}
-	?>
-	<?php
-	print_r($results);
-	?>
+$db = new MyDB();
+
+$result = $db->query('SELECT block_colour FROM blocks');
+var_dump($result->fetchArray());
+?>
 </p>
 <p class="red_counter">
 2
