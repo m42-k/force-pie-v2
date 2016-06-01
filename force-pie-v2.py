@@ -7,8 +7,11 @@
 ## Raspberry Pi Model B+ 
 
 import time
-import os
+#import os
 import RPi.GPIO as GPIO
+
+from subprocess import call
+call(["ls"])
 
 global GPIO
 GPIO.setmode(GPIO.BCM)
