@@ -9,7 +9,7 @@
  
 <style>
 html {
-	background-color: #eec6d9;
+	background-color: #eec6d9; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
