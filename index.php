@@ -102,7 +102,7 @@ p.yellow_counter {
 ini_set('display_errors', 'On');
 error_reporting(E_ALL|E_STRICT);
 
-$db = new SQLite3('../toy_box.db');
+$db = new SQLite3('/home/pi/kids-toy/toy_box.db');
 $result = ($db->query('SELECT * FROM blocks;'));
 while ($res = $result->fetchArray(SQLITE3_ASSOC)){
         #var_dump($res);
