@@ -124,7 +124,7 @@ def database_counter(colour):
         ## Execute Database Query
         toy_box_db.execute("UPDATE blocks\
         SET block_count = block_count + 1\
-        WHERE block_colour = (%s)", (colour))
+        WHERE block_colour = '"+colour+"'"
         
         ## Commit database changes
         connection.commit()
