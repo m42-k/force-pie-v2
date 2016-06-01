@@ -103,13 +103,10 @@ ini_set('display_errors', 'On');
 error_reporting(E_ALL|E_STRICT);
 
 $db = new SQLite3('/home/pi/kids-toy/toy_box.db');
-$result = ($db->query('SELECT * FROM blocks;'));
+$result = ($db->query('SELECT block_num FROM blocks WHERE block_colour = "Green";'));
 while ($res = $result->fetchArray(SQLITE3_ASSOC)){
         #var_dump($res);
-        print ("Num: " . $res["block_num"] .",<br />");
-        print ("Colour: " . $res["block_colour"] . " <br \>");
-        print ("Count: " . $res["block_count"] . " <br \>");
-        print ("<br>");
+        print (. $res["block_num"] .);
 }
 $db->close();
 ?>
@@ -117,13 +114,6 @@ $db->close();
 	phpinfo();
 	?> 
 <?php
-$db = new SQLite('../toy_box.db');
-
-var_dump($db->querySingle('SELECT block_count FROM blocks WHERE block_colour = "Red"'));
-print_r($db->querySingle('SELECT block_count FROM blocks WHERE block_colour = "Green"'));
-
-$db->close();
-?>
 </p>
 <p class="red_counter">
 2
