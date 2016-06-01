@@ -110,10 +110,6 @@ while ($res = $result->fetchArray(SQLITE3_ASSOC)){
 }
 $db->close();
 ?>
-	<?php
-	phpinfo();
-	?> 
-<?php
 </p>
 <p class="red_counter">
 2
