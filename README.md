@@ -1,7 +1,7 @@
 # force-pie-v2
 Force Pie Version 2
 
-Code written in Python
+Code written in Python & PHP
 
 Hardware
 - Raspberry Pi B+
@@ -12,11 +12,11 @@ Hardware
 - 1 Breadboard
 - Wires
 
-v3.0 - Future Release
+v3.0
 - Sound Functionality
 - MySQL Database Connections
 - Website Connections
-- 
+
 v2.1
 - SQLite database storing number of times the block is inserted
 
